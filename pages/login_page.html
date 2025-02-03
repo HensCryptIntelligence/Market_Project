@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+        }
+
+        .smartphone {
+            width: 300px;
+            height: 600px;
+            background-color: #222;
+            border-radius: 25px;
+            position: relative;
+            border: 5px solid #000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .screen {
+            width: 300px;
+            height: 600px;
+            background-color: rgba(17, 24, 39, 1);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .camera {
+            width: 15px;
+            height: 15px;
+            background-color: #353030;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        /* From Uiverse.io by Yaya12085 */ 
+.form-container {
+  width: 300px;
+  height: 600px;
+  border-radius: 0.75rem;
+  background-color: rgba(17, 24, 39, 1);
+  color: rgba(243, 244, 246, 1);
+  margin-top: 80px;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: 700;
+  margin-bottom: 78px;
+  transition: 0.5s;
+}
+
+.title:hover {
+    text-shadow: 0 0 30px #00ffcc, 0 0 35px #00ffcc, 0 0 40px #00ffcc;
+}
+
+
+/* From Uiverse.io by vikiWayne */ 
+
+.buttons {
+    width: 170px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.button {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #2c9caf;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #2c9caf;
+  margin: 20pxpx;
+}
+
+button:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #268391;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #2c9caf;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+}
+
+button:hover::before {
+  width: 250%;
+}
+
+.social-message {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  margin-top: 85px;
+}
+
+.line {
+  height: 1px;
+  flex: 1 1 0%;
+  background-color: rgba(55, 65, 81, 1);
+}
+
+.social-message .message {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba(156, 163, 175, 1);
+}
+
+.signup {
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  color: rgba(156, 163, 175, 1);
+}
+
+.link {
+    text-decoration: none;
+    color: #2c9caf;
+}
+
+</style>
+</head>
+<body>
+    <div class="smartphone">
+        <div class="camera"></div>
+        <div class="screen">
+
+        <!-- From Uiverse.io by Yaya12085 --> 
+<div class="form-container">
+	<p class="title">Log In</p>
+	<form class="form">
+		
+    <div class="buttons">
+        <button class="button">Guest</button>
+        <button class="button">Sign Up</button>
+        <button class="button">Register</button>
+    </div>   
+
+	</form>
+	<div class="social-message">
+		<div class="line"></div>
+		<p class="message">Login with your Accounts</p>
+		<div class="line"></div>
+	</div>
+	
+	<p class="signup">Don't have an account?
+		<a rel="noopener noreferrer" href="#" class="link">Create Now</a>
+	</p>
+</div>
+      
+        <div class="home-button"></div>
+    </div>
+</body>
+</html>
