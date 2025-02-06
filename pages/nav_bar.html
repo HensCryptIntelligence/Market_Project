@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartphone Frame</title>
+    <title>Navbar</title>
     <style>
         body {
             display: flex;
@@ -45,65 +45,6 @@
             transform: translateX(-50%);
             z-index: 100;
         }
-
-/* From Uiverse.io by Yaseen549 */ 
-.search-bar {
-  display: flex;
-  position: relative;
-  background-color: #6cccdd;
-  height: 120px;
-}
-.input {
-  color:black;
-  border: 2px solid #8707ff;
-  border-radius: 8px;
-  padding: 10px 8px;
-  background: transparent;
-  max-width: 200px;
-  height: 20px;
-  width: 200px;
-  margin: 28px 0 0 14px;
-}
-
-.input:active {
-  box-shadow: 2px 2px 15px #8707ff inset;
-}
-
-/* From Uiverse.io by niat786 */ 
-.search-btn {
- width: 45px;
- height: 45px;
- border: none;
- color: #fff;
- background-image: linear-gradient(30deg, #936fff, #2c9caf);
- border-radius: 14px;
- background-size: 100% auto;
- font-family: inherit;
- font-size: 1px;
- padding: 0.6em 1.2em;
- margin: 27px 0 0 10px;
-}
-
-button:hover {
- background-position: right center;
- background-size: 200% auto;
- -webkit-animation: pulse 2s infinite;
- animation: pulse512 1.5s infinite;
-}
-
-@keyframes pulse512 {
- 0% {
-  box-shadow: 0 0 0 0 #8707ff;
- }
-
- 70% {
-  box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
- }
-
- 100% {
-  box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
- }
-}
 
         /* From Uiverse.io by asgardOP */ 
 #navbody {
@@ -167,35 +108,6 @@ button:hover {
     <div class="smartphone">
         <div class="camera"></div>
         <div class="screen">
-
-<!-- From Uiverse.io by Yaseen549 --> 
-
-<div class="search-bar">
-<input
-  placeholder="Search of product..."
-  class="input"
-  name="text"
-  type="text"
-/>
-<button class="search-btn">
-  <svg
-    viewBox="2 1 30 30"
-    fill="none"
-    height="24"
-    width="24"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-hidden="true"
-    class="svg w-6 h-6 text-gray-800 dark:text-white"
-  >
-    <path
-      d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke="currentColor"
-    ></path>
-  </svg>
-</button>
-</div>
 
         <!-- From Uiverse.io by asgardOP --> 
 <div id="navbody">
