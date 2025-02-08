@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartphone Frame</title>
+    <title>Home Page</title>
     <style>
         body {
             display: flex;
@@ -105,6 +105,211 @@ button:hover {
  }
 }
 
+
+/* From Uiverse.io by SouravBandyopadhyay */ 
+.notification {
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  position: relative;
+  width: 17.1rem;
+  height: 4.3rem;
+  margin: -36px 0 0 14px;
+  background: #9728ff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 15px;
+  
+  --gradient: linear-gradient(to bottom, #2eadff, #689df9, #b1a0fd);
+  --color: #53d2f9;
+}
+
+.shop-text {
+    color: #283A81;
+}
+
+.list-text {
+    color: #46b8c3;
+}
+
+.notification:before {
+  position: absolute;
+  content: "";
+  inset: 0.0625rem;
+  border-radius: 0.9375rem;
+  background: #8707ff;
+  z-index: 2;
+}
+
+.notification:after {
+  position: absolute;
+  content: "";
+  width: 0.25rem;
+  inset: 0.65rem auto 0.65rem 0.5rem;
+  border-radius: 0.125rem;
+  background: var(--gradient);
+  transition: transform 300ms ease;
+  z-index: 4;
+}
+
+.notification:hover:after {
+  transform: translateX(0.15rem)
+}
+
+.notititle {
+  color: var(--color);
+  padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.notification:hover .notititle {
+  transform: translateX(0.15rem)
+}
+
+.notibody {
+  color: #cccccc;
+  padding: 0 1.25rem;
+  transition: transform 300ms ease;
+  z-index: 5;
+}
+
+.notification:hover .notibody {
+  transform: translateX(0.25rem)
+}
+
+.notiglow,
+.notiborderglow {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle closest-side at center, white, transparent);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.notiglow {
+  z-index: 3;
+}
+
+.notiborderglow {
+  z-index: 1;
+}
+
+.notification:hover .notiglow {
+  opacity: 0.1
+}
+
+.notification:hover .notiborderglow {
+  opacity: 0.1
+}
+
+.cmd {
+  height: 19px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  font-size: 12.5px;
+}
+.cmd::before {
+  content: attr(data-cmd);  
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  animation: inputs 8s steps(22) infinite;
+}
+.cmd::after {
+  content: "";
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  border-right: 0.15em solid #e34ba9;
+  animation: cursor 0.5s step-end infinite alternate, blinking 0.5s infinite;
+}
+
+
+@keyframes blinking {
+  20%,
+  80% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+}
+@keyframes cursor {
+  50% {
+    border-right-color: transparent;
+  }
+}
+@keyframes inputs {
+  0%,
+  100% {
+    width: 0;
+  }
+  10%,
+  90% {
+    width: 58px;
+  }
+  30%,
+  70% {
+    width: 220px;
+    max-width: max-content;
+  }
+}
+
+/* Category Box by OpenAI ChatGPT */
+
+.container-catebox {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            justify-content: center;
+            padding: 13px;
+        }
+
+        .category-box {
+            width: 57px;
+            height: 57px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #f8f8f8;
+            border-radius: 7px;
+            box-shadow: 0 4px 8px rgba(151, 40, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+            border: 1px solid #9728ff;
+            padding: 1px 0;
+            
+        }
+
+        .category-box:hover {
+            transform: scale(1.05);
+            
+        }
+
+        .category-box svg {
+            width: 50px;
+            height: 50px;
+            
+        }
+
+        .category-title {
+            font-size: 11px;
+            padding-bottom: 5px;
+        }
+
         /* From Uiverse.io by asgardOP */ 
 #navbody {
   width: 300px;
@@ -195,6 +400,59 @@ button:hover {
     ></path>
   </svg>
 </button>
+</div>
+
+<!-- From Uiverse.io by SouravBandyopadhyay --> 
+<div class="notification">
+  <div class="notiglow"></div>
+  <div class="notiborderglow"></div>
+  <div class="notititle">Welcome To <span class="shop-text">Shop</span><span class="list-text">List</span></div>
+  <div class="notibody">
+    <code class="cmd" data-cmd="Terima kasih atas kunjungan nya."></code>
+  </div>
+</div>
+
+<!-- Category Box by OpenAi ChatGPT -->
+
+
+<div class="container-catebox">
+  <!-- Kebutuhan Sehari-hari -->
+  <div class="category-box">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="8" width="16" height="8" rx="2" stroke="#53d2f9" stroke-width="2"/>
+          <path d="M6 8V6a3 3 0 1 1 6 0v2" stroke="#2eadff" stroke-width="2"/>
+      </svg>
+      <div class="category-title">Daily</div>
+  </div>
+
+  <!-- Produk Kebersihan -->
+  <div class="category-box">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="12" height="12" rx="3" stroke="#16f5b9" stroke-width="2"/>
+          <circle cx="9" cy="5" r="1" stroke="#689df9" stroke-width="2"/>
+          <circle cx="15" cy="5" r="1" stroke="#689df9" stroke-width="2"/>
+      </svg>
+      <div class="category-title">Clean</div>
+  </div>
+
+  <!-- Obat-obatan -->
+  <div class="category-box">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="5" width="14" height="14" rx="3" stroke="#700af5" stroke-width="2"/>
+          <path d="M12 8v8M8 12h8" stroke="#0af5ae" stroke-width="2"/>
+      </svg>
+      <div class="category-title">Drugs</div>
+  </div>
+
+  <!-- Rokok -->
+  <div class="category-box">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="15" width="14" height="4" fill="#7a4716"/>
+          <path d="M19 15v2M21 15v2" stroke="#b4b3b5" stroke-width="2"/>
+          <path d="M19 10c2 1 2 3 0 4M21 8c2 1 2 3 0 4" stroke="#b4b3b5" stroke-width="2"/>
+      </svg>
+      <div class="category-title">Cigarret</div>
+  </div>
 </div>
 
         <!-- From Uiverse.io by asgardOP --> 

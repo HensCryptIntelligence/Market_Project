@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smartphone Frame</title>
+    <title>Welcome Card</title>
     <style>
         body {
             display: flex;
@@ -68,15 +68,15 @@
   overflow: hidden;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 15px;
-  --gradient: linear-gradient(to bottom, #2eadff, #4488ff, #8370d6);
-  --color: #32a6ff
+  --gradient: linear-gradient(to bottom, #2eadff, #689df9, #b1a0fd);
+  --color: #53d2f9;
 }
 
-.shop {
+.shop-text {
     color: #283A81;
 }
 
-.list {
+.list-text {
     color: #46b8c3;
 }
 
@@ -155,17 +155,6 @@
   opacity: 0.1
 }
 
-.note {
-  color: var(--color);
-  position: fixed;
-  top: 80%;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  font-size: 0.9rem;
-  width: 75%;
-}
-
 .cmd {
   height: 19px;
   position: relative;
@@ -175,7 +164,7 @@
   font-size: 12.5px;
 }
 .cmd::before {
-  content: attr(data-cmd);
+  content: attr(data-cmd);  
   position: relative;
   display: block;
   white-space: nowrap;
@@ -242,7 +231,7 @@
 <div class="notification">
     <div class="notiglow"></div>
     <div class="notiborderglow"></div>
-    <div class="notititle">Welcome To <span class="shop">Shop</span><span class="list">List</span></div>
+    <div class="notititle">Welcome To <span class="shop-text">Shop</span><span class="list-text">List</span></div>
     <div class="notibody">
       <code class="cmd" data-cmd="Terima kasih atas kunjungan nya."></code>
     </div>
