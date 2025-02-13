@@ -296,13 +296,12 @@ button:hover {
 
         .category-box:hover {
             transform: scale(1.05);
-            
+            box-shadow: -2px 3px 3px 0.3px  rgba(240, 55, 228, 0.4), 2px 3px 3px 0.3px  rgba(240, 55, 228, 0.4);
         }
 
         .category-box svg {
             width: 50px;
             height: 50px;
-            
         }
 
         .category-title {
@@ -335,7 +334,7 @@ button:hover {
             text-decoration: none;
             font-size: 12px;
             color: #787777;
-            margin: 0 0 0 70px;
+            margin: 0 0 0 76px;
         }
 
         .promo-container {
@@ -369,7 +368,7 @@ button:hover {
     .poplist-header {
         display: block;
         align-items: center;
-        padding: 8px 0 6px 8px;
+        padding: 8px 0 6px 9px;
         background-color: #ead8fb;
       }
     .poplist-header span {
@@ -391,7 +390,7 @@ button:hover {
     max-width: 2000px;
     overflow-x: auto; 
     white-space: nowrap;
-    padding: 9px;
+    padding: 5px;
     background: #ead8fb;
 }
 
@@ -401,15 +400,15 @@ button:hover {
 
 .scroll-content {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     flex-wrap: nowrap;
     box-sizing: border-box;
     margin: 0 8px 0 0;
 }
 
 .item {
-    min-width: 140px;
-    height: 155px;
+    min-width: 145px;
+    height: 165px;
     background: #be78fe;
     color: white;
     font-size: 20px;
@@ -418,6 +417,74 @@ button:hover {
     border-radius: 5px;
     margin: 0 2px 0 0;
 }
+
+
+.product-card {
+    width: 140px;
+    height: 160px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 3px 5px 5px 0px  rgba(240, 55, 228, 0.7);
+    overflow: hidden;
+}
+
+.product-image {
+    position: relative;
+    background-color: #eee;
+    padding: 10px;
+    height: 70px;
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+
+.product-image img {
+    border-radius: 10px 10px 0 0;
+}
+
+.product-details {
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+
+}
+
+.product-title {
+    font-size: 12px;
+    display: block;
+    margin: 5px 0px;
+    width: auto;
+    position: relative;
+    color: #5700a9ae;
+}
+
+
+.category-info {
+    background-color: #e6d0fa;
+    font-size: 11px;
+    color: #a03efc;
+    display: block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin: 0 45px 0 0;
+
+}
+
+.price {
+    font-size: 12px;
+    color: #891fec;
+    display: inline;
+    width: auto;
+    position: relative;
+}
+
+.sold {
+    font-size: 10.5px;
+    color: #777;
+    display: inline;
+    margin: 0 0 0 5px;
+    width: auto;
+    position: relative;
+}
+
 
       /* From Uiverse.io by asgardOP */ 
 
@@ -571,7 +638,7 @@ button:hover {
     <div class="container-promobox">
       <div class="promo-header">
           <span>Hemat Lebih Banyak</span>
-          <a href="#">Ambil Semua  ></a>
+          <a href="#">Ambil Semua </a>
           <div class="promo-container">
               <div class="promo-box">
                   <strong>100% ON</strong>
@@ -597,18 +664,56 @@ button:hover {
       <a href="#">Tampilkan Semua </a>
   </div>
   <div class="container-poplist">
-      
       <div class="scrool-content">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
+
+            <!-- Product Box By OpenAI ChatGPT -->
+
+          <div class="item">
+            <div class="product-card">
+              <div class="product-image">
+                  <img src="laptop-stand.jpg" alt="Laptop Stand">
+          
+              </div>
+              <div class="product-details">
+                  <p class="product-title">Product Name is...</p>
+                  <span class="category-info">Daily Product</span>        
+                  <p class="price">Rp00.000</p>
+                  <span class="sold">00 Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="product-card">
+              <div class="product-image">
+                  <img src="laptop-stand.jpg" alt="Laptop Stand">
+          
+              </div>
+              <div class="product-details">
+                  <p class="product-title">Product Name is...</p>
+                  <span class="category-info">Daily Product</span>        
+                  <p class="price">Rp00.000</p>
+                  <span class="sold">00 Tersedia</span>
+              </div>
+          </div>
+          </div>
+
+          
+          <div class="item">
+            <div class="product-card">
+              <div class="product-image">
+                  <img src="laptop-stand.jpg" alt="Laptop Stand">
+          
+              </div>
+              <div class="product-details">
+                  <p class="product-title">Product Name is...</p>
+                  <span class="category-info">Daily Product</span>        
+                  <p class="price">Rp00.000</p>
+                  <span class="sold">00 Tersedia</span>
+              </div>
+          </div>
+          </div>
+          
       </div>
       </div>
   

@@ -48,40 +48,65 @@
 
 /* From Uiverse.io by Yaseen549 */ 
 .search-bar {
-  display: flex;
+  display: inline-block;
   position: relative;
-  background-color: #6cccdd;
+  background-color: #a4ecf9;
   height: 120px;
+  width: 300px;
+  padding-right: 10px;
+}
+
+.back-btn {
+  position: absolute;
+  color: #4a048b;
+  margin: 36px 0 0 12px;
+  padding: 0;
+  background: none;
+  border: none;
 }
 .input {
   color:black;
   border: 2px solid #8707ff;
   border-radius: 8px;
-  padding: 10px 8px;
+  padding: 10px 70px 10px 8px;
   background: transparent;
-  max-width: 200px;
-  height: 20px;
-  width: 200px;
-  margin: 28px 0 0 14px;
+  height: 44px;
+  width: 240px;
+  margin: 28px 0 0 50px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .input:active {
   box-shadow: 2px 2px 15px #8707ff inset;
 }
 
+.clear-btn {
+  position: absolute;
+  margin: 41px -65px ;
+  background-color: rgb(155, 151, 151);
+  color: #fff;
+  border-radius: 50%;
+}
+
+.clear-btn:hover path {
+    stroke: white; 
+}
+
 /* From Uiverse.io by niat786 */ 
 .search-btn {
- width: 45px;
- height: 45px;
+ width: 35px;
+ height: 35px;
+ position: absolute;
  border: none;
  color: #fff;
  background-image: linear-gradient(30deg, #936fff, #2c9caf);
- border-radius: 10.5px;
+ border-radius: 6px;
  background-size: 100% auto;
  font-family: inherit;
  font-size: 1px;
  padding: 0.6em 1.2em;
- margin: 27px 0 0 10px;
+ margin: 32.5px 0 0 -39.5px;
 }
 
 button:hover {
@@ -115,22 +140,44 @@ button:hover {
 <!-- From Uiverse.io by Yaseen549 --> 
 
 <div class="search-bar">
+  <button class="back-btn">
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="29"
+    height="25"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+>
+    <!-- Batang panah -->
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <!-- Kepala panah -->
+    <polyline points="9 6 3 12 9 18" />
+</svg>
+  </button>
+  
 <input
   placeholder="Search of product..."
   class="input"
   name="text"
   type="text"
-/>
+>
+<svg class="clear-btn" viewBox="1 -0.3 21 24" width="18" height="18">
+  <path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
 <button class="search-btn">
+  
   <svg
-    viewBox="0.5 0.5 25 26"
+    viewBox="0.1 -1 21 27"
     fill="none"
     height="24"
     width="24"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    class="svg w-6 h-6 text-gray-800 dark:text-white"
-  >
+    class="svg w-6 h-6 text-gray-800 dark:text-white">
     <path
       d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
       stroke-width="2"
@@ -139,9 +186,7 @@ button:hover {
     ></path>
   </svg>
  </button>
+</div>
 
-
-
-    </div>
 </body>
 </html>
