@@ -136,9 +136,7 @@
   font-weight: 550;
   box-sizing: border-box;
   color: #4a048b;
-  /* border: 1px solid #ccc; */
-  border-top: none;
-  display: none;
+  /* display: none; */
 }
 
 .clear-history {
@@ -155,9 +153,9 @@
     width: 100%;
     padding: 7px 0 5px 10px;
     background: white;
-    border: 1px solid #972dfb;
+    border: 1px solid #c1c1c1;
     border-top: none;
-    display: none;
+    display: none; 
     max-height: 150px;
     overflow-y: auto;
     font-size: 14px;
@@ -173,6 +171,16 @@
   background-color: #ededed;
 }
 
+.see-box {
+  position: relative;
+    width: 100%;
+    padding: 10px 95px;
+    background: white;
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #4e0494;
+}
     </style>
 </head>
 <body>
@@ -204,12 +212,13 @@
   
 <input
   placeholder="Search of product..."
+  id="search-input" 
   class="input"
   name="text"
   type="text"
   autocomplete="off"
 >
-<svg class="clear-btn" viewBox="1 -0.3 21 24" width="18" height="18">
+<svg class="clear-btn" viewBox="1 -0.3 21 24" width="15" height="15">
   <path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 <button class="search-btn">
@@ -234,13 +243,77 @@
 
 <div class="history-title">History Search <button class="clear-history">Hapus Semua</button></div>
 
-<div class="history-box" id="history">Hans Kelsen</div>
-<div class="history-box" id="history">Hans Kelsen</div>
+<div class="history-box" id="history"></div>
 
-<!-- <div class="predictions-box" id="predictions">Prediction Search</div>
-<div class="predictions-box" id="predictions">Prediction Search</div> -->
+<div class="predictions-box" id="predictions"></div>
+
+
+<div class="see-box">Lihat Selengkapnya</div>
 
 <script>
+
+const searchInput = document.getElementById("search-input");
+const suggestionsBox = document.getElementById("predictions");
+const historyBox = document.getElementById("history");
+
+// Daftar prediksi pencarian
+const suggestions = ["Banana Plantation", "Blockchain", "AI and Future", "Micro Nuclear", "Wearable Technology"];
+
+let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+// Menampilkan prediksi saat mengetik
+searchInput.addEventListener("input", function() {
+    let query = searchInput.value.toLowerCase();
+    suggestionsBox.innerHTML = "";
+    
+    if (query) {
+        let filteredSuggestions = suggestions.filter(item => item.toLowerCase().includes(query));
+        
+        filteredSuggestions.forEach(item => {
+            let div = document.createElement("div");
+            div.textContent = item;
+            div.onclick = function() {
+                searchInput.value = item;
+                addToHistory(item);
+                suggestionsBox.style.display = "none";
+            };
+            suggestionsBox.appendChild(div);
+        });
+
+        suggestionsBox.style.display = filteredSuggestions.length ? "block" : "none";
+    } else {
+        suggestionsBox.style.display = "none";
+    }
+});
+
+// Menyimpan ke riwayat pencarian
+function addToHistory(term) {
+    if (!searchHistory.includes(term)) {
+        searchHistory.unshift(term);
+        if (searchHistory.length > 5) searchHistory.pop(); // Simpan maksimal 5 riwayat
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    }
+    displayHistory();
+}
+
+// Menampilkan riwayat pencarian
+function displayHistory() {
+    historyBox.innerHTML = "";
+    searchHistory.forEach(item => {
+        let div = document.createElement("div");
+        div.textContent = item;
+        div.onclick = function() {
+            searchInput.value = item;
+        };
+        historyBox.appendChild(div);
+    });
+
+    historyBox.style.display = searchHistory.length ? "block" : "none";
+}
+
+// Load riwayat saat halaman dimuat
+window.onload = displayHistory;
+    </script>
 
 </script>
 </body>
