@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Cart Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+        }
+
+        .smartphone {
+            width: 300px;
+            height: 600px;
+            background-color: #222;
+            border-radius: 25px;
+            position: relative;
+            border: 5px solid #000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            
+        }
+
+        .screen {
+            width: 300px;
+            height: 600px;
+            background-color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+        }
+
+        .camera {
+            width: 15px;
+            height: 15px;
+            background-color: #353030;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 14px 10px 10px;
+            background-color: #f8f8f8;
+            border-bottom: 1px solid #ccc;
+            position: fixed;
+            width: 275px;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+.back-btn {
+  color: #4a048b;
+  padding: 0 8px 0 3px;
+  background: none;
+  border: none;
+  border-right: 1px solid black;
+  margin: 0 -10px 0 0;
+}
+
+.quantity-cart {
+    border: none;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 3px 5px;
+    font-size: 17px;
+    border-radius: 5px;
+
+}
+        .cart-list-container {
+            flex: 1;
+            overflow-y: auto;
+            margin-top: 55px;
+            height: calc(600px - 80px);
+            /* margin-bottom: 40px; */
+            padding: 8px 8px;
+        }
+        .cart-list-container::-webkit-scrollbar{
+          display: none;
+        }
+        .cart-list-product-container {
+            display: flex;
+            padding: 10px 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .cart-list-top-container {
+            display: flex;
+            /* flex-direction: row; */
+        }
+
+        .cart-list-product-content {
+            width: 264px;
+            height: 100px;
+            background-color: #f5eff9;
+            margin: 10px 0 0 0;
+            border: none;
+            border-top: 1px solid black;
+        }
+
+.custom-checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s;
+
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox .checkmark {
+  width: 16px;
+  height: 17px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+  transform-style: preserve-3d;
+}
+
+.custom-checkbox .checkmark::before {
+  content: "\2713";
+  font-size: 16px;
+  color: transparent;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: #333;
+  border-color: #333;
+  transform: scale(1.1) rotateZ(360deg) rotateY(360deg);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::before {
+  color: #fff;
+}
+
+.custom-checkbox:hover {
+  color: #666;
+}
+
+.custom-checkbox:hover .checkmark {
+  border-color: #666;
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.custom-checkbox input[type="checkbox"]:focus + .checkmark {
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.custom-checkbox .checkmark,
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  transition: background-color 1.3s, border-color 1.3s, color 1.3s, transform 0.3s;
+}
+
+.vertical-line {
+    width: 1px; 
+    height: 23px;
+    background-color: black;
+    margin-right: 10px;
+}
+
+.category-info {
+    background-color: #a03efc;
+    font-size: 12px;
+    color: #e6d0fa;
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 2px;
+}
+
+.cart-list-text {
+    font-size: 13.5px;
+    margin: 0 64px 0 5px;
+}
+
+.cart-list-delete-btn {
+    border: 1px solid red;
+    background-color: rgb(252, 245, 245);
+    padding: 0 4px;
+    margin: 0;
+    color: red;
+    font-size: 12px;
+    border-radius: 2.5px;
+    transition: 0.8s;
+}
+
+.cart-list-delete-btn:hover {
+    color: #9322fc;
+    transform: scale(1.05);
+}
+
+.cart-list-delete-btn:active {
+    color: #9322fc;
+    transform: scale(1.5);
+    transition: 3s;
+}
+
+.cart-list-product-content {
+    width: 263px; 
+    display: flex;
+    padding: 7px 0 0 0;
+    background-color: white;
+}
+
+.cart-list-prduct-image {
+    width: 280px;
+    height: 115x;
+    border: 1px solid black;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.cart-product-details {
+    display: inline;
+    margin: 0 5px;
+}
+
+.cart-product-title {
+    display: inline-block;
+    font-size: 15px;
+}
+
+.cart-category-info {
+    background-color: #a03efc;
+    font-size: 11.2px;
+    color: #e6d0fa;
+    display: inline-block;
+    padding: 3px 20px;
+    border-radius: 2px;
+    margin: 5px 0;
+}
+
+.cart-product-price {
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 0;
+}
+.cart-quantity-product {
+    display: block;
+    font-size: 14.5px;
+    margin-top: 3px;
+}
+
+        .bottom-bar {
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-top: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 280px;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .result-cart {
+            border: none;
+            border-left: 1px solid #a03efc;
+            padding: 3px 0 3px 5.5px;
+            margin: 0 0 0 4px;
+        }
+        .checkout-btn {
+            background-color: white;
+            color: #a03efc;
+            border: 1px solid #a03efc;
+            border-radius: 2.5px;
+            padding: 8.5px 13px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="smartphone">
+        <div class="camera"></div>
+        <div class="screen">
+
+            <div class="top-bar">
+                <button class="back-btn">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="29"
+                    height="23"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <!-- Batang panah -->
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <!-- Kepala panah -->
+                    <polyline points="9 6 3 12 9 18" />
+                </svg>
+                  </button>
+                <span class="title-cart">Shop Cart List</span>
+                <span class="quantity-cart">00</span>
+            </div>
+
+            <div class="cart-list-container">
+                <div class="cart-list-product-container">
+                <div class="cart-list-top-container">
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="vertical-line"></div>
+                    <span class="cart-list-title"><span class="category-info">Daily</span><span class="cart-list-text">Official Shop</span></span><button class="cart-list-delete-btn">Hapus</button>
+                </div>
+                <div class="cart-list-product-content">
+                    <div class="cart-list-prduct-image">
+                        <img src="laptop-stand.jpg" alt="Product Image">
+                    </div>
+                    <div class="cart-product-details">
+                        <span class="cart-product-title">Product Name is...</span> 
+                        <span class="cart-category-info">Daily Product</span>     
+                        <span class="cart-product-price">Rp 00.000</span>
+                        <span class="cart-quantity-product"><span>Item : <span>00</span></span> 
+                    </div>
+                </div>
+              </div>
+              <div class="cart-list-product-container">
+                <div class="cart-list-top-container">
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="vertical-line"></div>
+                    <span class="cart-list-title"><span class="category-info">Daily</span><span class="cart-list-text">Official Shop</span></span><button class="cart-list-delete-btn">Hapus</button>
+                </div>
+                <div class="cart-list-product-content">
+                    <div class="cart-list-prduct-image">
+                        <img src="laptop-stand.jpg" alt="Product Image">
+                    </div>
+                    <div class="cart-product-details">
+                        <span class="cart-product-title">Product Name is...</span> 
+                        <span class="cart-category-info">Daily Product</span>     
+                        <span class="cart-product-price">Rp 00.000</span>
+                        <span class="cart-quantity-product"><span>Item : <span>00</span></span> 
+                    </div>
+                </div>
+              </div>
+              <div class="cart-list-product-container">
+                <div class="cart-list-top-container">
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="vertical-line"></div>
+                    <span class="cart-list-title"><span class="category-info">Daily</span><span class="cart-list-text">Official Shop</span></span><button class="cart-list-delete-btn">Hapus</button>
+                </div>
+                <div class="cart-list-product-content">
+                    <div class="cart-list-prduct-image">
+                        <img src="laptop-stand.jpg" alt="Product Image">
+                    </div>
+                    <div class="cart-product-details">
+                        <span class="cart-product-title">Product Name is...</span> 
+                        <span class="cart-category-info">Daily Product</span>     
+                        <span class="cart-product-price">Rp 00.000</span>
+                        <span class="cart-quantity-product"><span>Item : <span>00</span></span> 
+                    </div>
+                </div>
+              </div>
+              <div class="cart-list-product-container">
+                <div class="cart-list-top-container">
+                    <label class="custom-checkbox">
+                        <input name="dummy" type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="vertical-line"></div>
+                    <span class="cart-list-title"><span class="category-info">Daily</span><span class="cart-list-text">Official Shop</span></span><button class="cart-list-delete-btn">Hapus</button>
+                </div>
+                <div class="cart-list-product-content">
+                    <div class="cart-list-prduct-image">
+                        <img src="laptop-stand.jpg" alt="Product Image">
+                    </div>
+                    <div class="cart-product-details">
+                        <span class="cart-product-title">Product Name is...</span> 
+                        <span class="cart-category-info">Daily Product</span>     
+                        <span class="cart-product-price">Rp 00.000</span>
+                        <span class="cart-quantity-product"><span>Item : <span>00</span></span> 
+                    </div>
+                </div>
+              </div>
+
+            </div>
+
+            
+                
+            <div class="bottom-bar">
+                <span>Total : Rp 00.000</span>
+                <button class="checkout-btn">Checkout <span class="result-cart">00</span></button>
+            </div>
+</body>
+</html>
