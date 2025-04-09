@@ -1,0 +1,485 @@
+
+/* CSS Reset to normalize browser default styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Setting root font size for rem units */
+html {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+    width: 100%;
+    height: 100%;
+}
+
+/* Main container - replaced .screen with a more semantic class */
+.app-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    background-color: white;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Hide scrollbar but keep functionality */
+.app-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Search bar - made sticky and responsive */
+.search-bar {
+position: sticky;
+background-color: #a4ecf9;
+padding: 0.9rem 0.425rem; /* 24px 10px */
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+top: 0;
+}
+
+/* Tombol kembali yang responsif */
+.back-btn {
+color: #4a048b;
+background: none;
+border: none;
+cursor: pointer;
+padding: 0 0.25rem 0 0.2rem;
+margin-right: 0.4rem;
+flex-shrink: 0; /* Mencegah penyusutan button */
+}
+
+/* Wrapper untuk input dan tombol yang fleksibel */
+.input-wrapper {
+position: relative;
+flex-grow: 1;
+display: flex;
+align-items: center;
+}
+
+/* Input search yang responsif */
+.input {
+color: black;
+border: 0.125rem solid #8707ff; /* 2px */
+border-radius: 0.5rem; /* 8px */
+padding: 0.625rem 4.5rem 0.625rem 0.5rem; /* 10px 40px 10px 8px */
+background: transparent;
+width: 100%;
+height: 2.75rem; /* 44px */
+outline: none;
+}
+
+.input:active, .input:focus {
+box-shadow: 0 0 0.9375rem #a545fe inset; /* 15px */
+}
+
+/* Tombol hapus input yang responsif */
+.clear-btn {
+position: absolute;
+right: 2.9rem; /* 40px */
+background-color: rgb(171, 169, 169);
+color: #fff;
+border: none;
+border-radius: 50%;
+width: 1.25rem; /* 20px */
+height: 1.25rem; /* 20px */
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+}
+
+.clear-btn:hover {
+background-color: #767575;
+}
+
+/* Tombol search yang responsif */
+.search-btn {
+right: 0.3rem;
+border: none;
+color: #fff;
+background-image: linear-gradient(30deg, #936fff, #2c9caf);
+border-radius: 0.375rem; /* 6px */
+width: 2.7rem; /* 35px */
+height: 2.7rem; /* 35px */
+margin: 0 0 0 0.5rem ;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+background-position: right center;
+background-size: 200% auto;
+animation: pulse512 1.5s infinite;
+}
+
+@keyframes pulse512 {
+0% {
+box-shadow: 0 0 0 0 #8707ff;
+}
+
+70% {
+box-shadow: 0 0 0 0.625rem rgb(218 103 68 / 0%); /* 10px */
+}
+
+100% {
+box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+}
+}
+/* Notification - made responsive with flexbox */
+.notification {
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    position: relative;
+    width: calc(100% - 1.75rem);
+    height: auto;
+    min-height: 4.3rem;
+    margin: 1rem 0.875rem;
+    background: #9728ff;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    font-size: 0.9375rem;
+    --gradient: linear-gradient(to bottom, #2eadff, #689df9, #b1a0fd);
+    --color: #53d2f9;
+}
+
+.shop-text {
+    color: #283A81;
+}
+
+.list-text {
+    color: #46b8c3;
+}
+
+.notification:after {
+    position: absolute;
+    content: "";
+    width: 0.25rem;
+    inset: 0.65rem auto 0.65rem 0.5rem;
+    border-radius: 0.125rem;
+    background: var(--gradient);
+    transition: transform 300ms ease;
+    z-index: 4;
+}
+
+.notification:hover:after {
+    transform: translateX(0.15rem)
+}
+
+.notititle {
+    color: var(--color);
+    padding: 0.55rem 0.25rem 0.46rem 1.25rem;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
+
+.notification:hover .notititle {
+    transform: translateX(0.15rem)
+}
+
+.notibody {
+    color: #cccccc;
+    padding: 0 1.25rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+}
+
+.cmd {
+    height: 1.1875rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 0.8125rem;
+}
+
+.cmd::before {
+    content: attr(data-cmd);
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: transparent;
+    animation: inputs 8s steps(22) infinite;
+}
+
+.cmd::after {
+    content: "";
+    position: relative;
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+    border-right: 0.15em solid #e34ba9;
+    animation: cursor 0.5s step-end infinite alternate, blinking 0.5s infinite;
+}
+
+@keyframes blinking {
+    20%,
+    80% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes inputs {
+    0%,
+    100% {
+        width: 0;
+    }
+    10%,
+    90% {
+        width: 3.625rem;
+    }
+    30%,
+    70% {
+        width: 14.375rem;
+        max-width: max-content;
+    }
+}
+
+/* Category Title - made responsive */
+.poplist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 0.7rem 0.575rem 0.5rem;
+    background-color: #ead8fb;
+    width: 100%;
+}
+
+.poplist-header span {
+    font-size: 1.325rem;
+    font-weight: bold;
+    color: #3b0285;
+}
+
+.poplist-header a {
+    text-decoration: none;
+    font-size: 0.76rem;
+    color: #575658;
+}
+
+/* Category Box - redesigned with CSS Grid for responsiveness */
+.container-poplist {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: #ead8fb;
+    min-height: 0;
+}
+
+.container-poplist::-webkit-scrollbar {
+    display: none;
+}
+
+.item {
+    width: 100%;
+    background: #be78fe;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-radius: 0.3125rem;
+    min-width: 0;
+    min-height: 0;
+}
+
+.product-card {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 0.2125rem;
+    box-shadow: 0.1875rem 0.3125rem 0.3125rem 0 rgba(240, 55, 228, 0.7);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image {
+    position: relative;
+    background-color: #eee;
+    height: 9rem;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.product-image img {
+    border-radius: 0.225rem 0.225rem 0 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details {
+    padding: 0 0 0 0.625rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-title {
+    font-size: 0.865rem;
+    display: block;
+    margin: 0.6rem 0 0.4825rem 0;
+    color: #5700a9ae;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.category-info {
+    background-color: #e6d0fa;
+    font-size: 0.5875rem;
+    color: #a03efc;
+    display: inline-block;
+    padding: 0.2475rem 0.5rem;
+    border-radius: 0.25rem;
+    margin: 0 0 0.5125rem 0;
+    max-width: fit-content;
+}
+
+.price {
+    font-size: 0.98rem;
+    color: #891fec;
+    display: inline-block;
+}
+
+.sold {
+    font-size: 0.69rem;
+    color: #777;
+    display: inline;
+    margin: 0.5rem 0;
+}
+
+/* Navigation Bar - made fixed and responsive */
+
+/* Navigation bar styles */
+.navbar {
+width: 100%;
+height: 60px;
+background-color: rgb(135, 7, 255);
+bottom: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+position: sticky;
+}
+
+.nav-items {
+display: flex;
+justify-content: space-between;
+width: 85%;
+list-style: none;
+}
+
+.nav-btn {
+background: none;
+border: none;
+cursor: pointer;
+padding: 10px;
+border-radius: 10px;
+transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+transform: translateY(-4px);
+}
+
+.nav-btn svg {
+width: 24px;
+height: 24px;
+color: #fcfcfc;
+opacity: 0.8;
+transition: all 0.2s ease;
+}
+
+.nav-btn:hover svg {
+color: rgb(0, 255, 204);
+opacity: 1;
+}
+
+.nav-btn.active svg {
+color: rgb(0, 255, 204);
+opacity: 1;
+}
+
+/* Media queries for different screen sizes */
+
+/* Large phones (480px - 640px) */
+@media screen and (min-width: 30rem) and (max-width: 40rem) {
+    html {
+        font-size: 16px;
+    }
+    
+    .container-poplist {
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    }
+}
+
+/* Tablets (640px - 768px) */
+@media screen and (min-width: 40rem) and (max-width: 48rem) {
+    html {
+        font-size: 18px;
+    }
+    
+    .container-poplist {
+        grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    }
+    
+    .app-container {
+        max-width: 48rem;
+        margin: 0 auto;
+    }
+}
+
+/* Larger screens (768px+) */
+@media screen and (min-width: 48rem) {
+    html {
+        font-size: 18px;
+    }
+    
+    .app-container {
+        max-width: 48rem;
+        margin: 0 auto;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+    }
+    
+    .container-poplist {
+        grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    }
+    
+    #navbody {
+        max-width: 48rem;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

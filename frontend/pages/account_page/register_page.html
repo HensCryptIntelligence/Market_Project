@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta viewport yang benar untuk responsivitas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="../../css/account_css/register_page.css">
+    <link rel="stylesheet" href="../../css/account_css/response.css">
+</head>
+<body>
+    <div class="screen">
+        <div class="form-container">
+            <h2 class="title">Register</h2>
+            <form class="form">
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input placeholder="" id="name" name="name" type="text" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input placeholder="" id="username" name="username" type="text" required />
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input placeholder="" id="email" name="email" type="email" required />
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input placeholder="" id="password" name="password" type="password" required />
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input placeholder="" type="password" id="confirmPassword" name="confirmPassword" required />
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            
+            <div class="social-message">
+                <div class="line"></div>
+                <p class="message">Log In without Register? <a rel="noopener noreferrer" href="#" class="link">Guest Now!</a></p>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container untuk memuat popup -->
+    <div id="popup-container"></div>
+
+<script src="response.js"></script>
+<script>
+
+
+    fetch("response.html")
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("popup-container").innerHTML = html;
+                });
+
+    document.querySelector(".form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Mencegah reload halaman
+    
+        const name = document.getElementById("name").value.trim();
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+    
+        // Validasi sederhana
+        if (!name || !username || !email || !password || !confirmPassword) {
+            showPopup("Warning!", "Semua kolom harus diisi!", "error");
+            return;
+        }
+    
+        if (password !== confirmPassword) {
+            showPopup("Warning!", "Password dan Confirm Password tidak cocok!", "error");
+            return;
+        }
+    
+        // Kirim Data ke Backend
+        fetch("http://localhost:5001/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, username, email, password })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response dari backend:", data); // Tambahkan ini untuk debugging
+    
+                if (data.success) {
+                    showPopup("Success!", "Registrasi kamu berhasil!", "success");
+                    
+                    setTimeout(() => window.location.href = "signin_page.html", 2000);
+                } else {
+                    showPopup("Error!", data.message || "Terjadi kesalahan dalam registrasi.", "error");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                showPopup("Error!", "Gagal menghubungi server.", "error");
+            });
+    });
+    
+    // Navigasi ke halaman Guest
+    document.querySelector(".link").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "login_page.html";
+    });
+</script>
+    
+</body>
+</html>

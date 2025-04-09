@@ -1,0 +1,99 @@
+    
+/* Container untuk fitur promosi E-commerce */
+.promo-box-container {
+    width: 100%;
+    margin: 0;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===== PROMOTION BOX ===== */
+.promo-bar-container {
+    width: 100%;
+    background-color: #f5edfe;
+    border-bottom: 0.5px solid rgb(201, 201, 201);
+    padding: 0.75rem 0.6rem;
+    margin: 0;
+}
+
+.promo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 0.4rem 0;
+}
+
+.promo-header span {
+    font-size: 1rem;
+    font-weight: bold;
+    color:  #3c0174;
+}
+
+.promo-header a {
+    text-decoration: none;
+    font-size: 0.65rem;
+    color: #787777;
+}
+
+.promo-header a:hover {
+    color:  #9728ff;
+}
+.promo-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+    background: #f4eafd;
+    padding: 0.25rem 0;
+    border-radius: 0.3125rem;
+}
+
+.promo-box {
+    background: #ead8fb;
+    padding: 0.5rem 0.25rem;
+    border-radius: 0.3125rem;
+    text-align: center;
+    border: 1px dashed rgb(81, 81, 81);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.promo-box:hover,
+.promo-box:focus {
+    transform: translateY(-0.125rem); /* 2px -> rem */
+    box-shadow: 0 0.25rem 0.5rem rgba(148, 36, 254, 0.2);
+}
+
+.promo-box strong {
+    color: #9728ff;
+    font-size: 0.65rem;
+    display: block;
+}
+
+.promo-box p {
+    color: #9728ff;
+    font-size: o.65rem;
+    margin: 0.25rem 0 0;
+}
+
+/* ===== MEDIA QUERIES ===== */
+/* Untuk perangkat dengan layar lebih besar dari 480px */
+@media screen and (min-width: 30rem) { /* 480px */
+    .container-catebox {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+    }
+    
+    .promo-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .category-title {
+        font-size: 0.8rem;
+    }
+    
+    .promo-box strong,
+    .promo-box p {
+        font-size: 0.8rem;
+    }
+}

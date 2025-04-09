@@ -1,0 +1,213 @@
+
+/* CSS Reset untuk menghilangkan margin dan padding bawaan browser */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Pengaturan dasar untuk mobile-first approach */
+:root {
+    --primary-color: rgb(53, 1, 92);
+    --accent-color: #2c9caf;
+    --accent-hover: #70bdca;
+    --text-light: rgba(243, 244, 246, 1);
+    --text-muted: rgba(156, 163, 175, 1);
+    --line-color: rgba(55, 65, 81, 1);
+    --shadow-color: #268391;
+}
+
+html {
+    font-size: 16px;
+    height: 100%;
+}
+
+body {
+    background-color: #f1f1f1;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: none;
+}
+
+/* Form login container - sekarang menjadi elemen langsung di dalam body */
+.form-login-container {
+    width: 100%;
+    max-width: 30rem;
+    padding: 5.5rem;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 35rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Judul login dengan spacing yang responsif */
+.title-login {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    padding: 3rem 0 3rem 0;
+    transition: 0.5s;
+    margin: 0 0 2.5rem 0;
+}
+
+.title-login:hover {
+    text-shadow: 0 0 1.875rem #00ffcc, 0 0 2.188rem #00ffcc, 0 0 2.5rem #00ffcc;
+}
+
+/* Container tombol dengan flexbox untuk responsif */
+.buttons-login-container {
+    width: 100%;
+    max-width: 12rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+/* Style tombol yang dioptimasi */
+.guest-button, 
+.signup-button, 
+.register-button {
+    padding: 0.75em 1.5em;
+    border: none;
+    border-radius: 0.3125rem;
+    font-weight: bold;
+    letter-spacing: 0.3125rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--accent-color);
+    transition: all 0.3s;
+    font-size: 0.9375rem;
+    position: relative;
+    overflow: hidden;
+    outline: 0.125rem solid var(--accent-color);
+    width: 100%;
+    touch-action: manipulation;
+}
+
+.guest-button:hover, 
+.signup-button:hover, 
+.register-button:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+    outline: 0.125rem solid var(--accent-hover);
+    box-shadow: 0.25rem 0.3125rem 1.0625rem -0.25rem var(--shadow-color);
+}
+
+.guest-button::before, 
+.signup-button::before, 
+.register-button::before {
+    content: "";
+    position: absolute;
+    left: -3.125rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--accent-color);
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 0.3s;
+}
+
+.guest-button:hover::before, 
+.signup-button:hover::before, 
+.register-button:hover::before {
+    width: 250%;
+}
+
+/* Pesan sosial media dengan flexbox */
+.social-message {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+    margin: 6.5rem 0 0 0;
+    width: 100%;
+}
+
+.line {
+    height: 0.0625rem;
+    flex: 1 1 0%;
+    background-color: var(--line-color);
+}
+
+.social-message .message {
+    padding: 0 0.75rem 0 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* Sign up text */
+.signup {
+    text-align: center;
+    font-size: 0.8rem;
+    line-height: 1rem;
+    color: var(--text-muted);
+    margin: 0 0 4.7rem 0;
+    padding: 1rem 0;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* Media queries untuk layar yang lebih besar - mobile-first approach */
+@media screen and (min-width: 480px) {
+    .form-login-container {
+        max-width: 30rem;
+    }
+
+    .title-login {
+        font-size: 2.3rem;
+        padding: 4rem 0 4rem 0;
+    }
+
+    .buttons-login-container {
+        max-width: 14rem;
+        gap: 1.5rem;
+    }
+
+    .guest-button, 
+    .signup-button, 
+    .register-button {
+        font-size: 1rem;
+        padding: 1em 2em;
+}
+
+}
+
+@media screen and (min-width: 768px) {
+    .form-login-container {
+        max-width: 40rem;
+    }
+
+    .title-login {
+        font-size: 3.3rem;
+        padding: 4rem 0 5rem 0;
+    }
+
+    .buttons-login-container {
+        max-width: 17rem;
+        gap: 1.5rem;
+    }
+
+    .guest-button, 
+    .signup-button, 
+    .register-button {
+        font-size: 1.2rem;
+        padding: 1.2em 2em;
+    }
+}

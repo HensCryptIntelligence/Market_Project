@@ -1,0 +1,126 @@
+
+    /* CSS Reset */
+    *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Menggunakan unit relatif dan menghindari overflow */
+    html, body {
+        background-color: #f1f1f1;
+        width: 100%;
+        height: 100%;
+        font-size: 16px; /* Base font size untuk rem */
+        overflow-x: hidden;
+    }
+
+    /* Layar utama */
+    .screen {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Container utama menggunakan flexbox */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 31.25rem; /* 500px dalam rem */
+        padding: 1rem;
+    }
+
+    /* Logo responsif */
+    .logo {
+        width: 6.5rem; /* 72px dalam rem */
+        height: auto;
+        margin-bottom: 5rem;
+    }
+
+    /* Container dots dengan flexbox */
+    .dots-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    /* Styling dot animasi */
+    .dot {
+        height: 0.9375rem; /* 15px dalam rem */
+        width: 0.625rem; /* 10px dalam rem */
+        margin-right: 0.625rem;
+        border-radius: 0.625rem;
+        background-color: #b3d4fc;
+        animation: pulse 1.8s infinite ease-in-out;
+    }
+
+    .dot:last-child {
+        margin-right: 0;
+    }
+
+    /* Delay animasi untuk setiap dot */
+    .dot:nth-child(1) { animation-delay: -0.2s; }
+    .dot:nth-child(2) { animation-delay: -0.1s; }
+    .dot:nth-child(3) { animation-delay: 0s; }
+    .dot:nth-child(4) { animation-delay: 0.1s; }
+    .dot:nth-child(5) { animation-delay: 0.2s; }
+
+    /* Keyframes untuk animasi pulse */
+    @keyframes pulse {
+        0% {
+            transform: scale(0.8);
+            background-color: #4506a5;
+            box-shadow: 0 0 0 0 rgba(158, 46, 250, 0.7);
+        }
+        50% {
+            transform: scale(1);
+            background-color: #a81cfa;
+            box-shadow: 0 0 0 0.625rem rgba(115, 48, 224, 0);
+        }
+        100% {
+            transform: scale(0.8);
+            background-color: #009898;
+            box-shadow: 0 0 0 0 rgba(60, 241, 223, 0.7);
+        }
+    }
+
+    /* Media queries untuk perangkat yang lebih besar - mobile first approach */
+    @media screen and (min-width: 36rem) { /* 576px */
+        .logo {
+            width: 7.5rem; /* 88px dalam rem */
+            margin-bottom: 7.5rem;
+        }
+        
+        .dot {
+            height: 1.225rem; /* 18px dalam rem */
+            width: 0.78rem; /* 12px dalam rem */
+            margin-right: 0.75rem;
+        }
+    }
+
+    @media screen and (min-width: 48rem) { /* 768px */
+        .logo {
+            width: 8.25rem; /* 100px dalam rem */
+            margin-bottom: 7rem;
+        }
+        
+        .dot {
+            height: 1.35rem; /* 20px dalam rem */
+            width: 0.875rem; /* 14px dalam rem */
+            margin-right: 0.875rem;
+        }
+    }
+
+    @media screen and (min-width: 62rem) { /* 992px */
+        .container {
+            max-width: 37.5rem; /* 600px dalam rem */
+        }
+    }

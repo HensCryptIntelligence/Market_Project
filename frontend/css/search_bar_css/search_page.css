@@ -1,0 +1,217 @@
+
+
+/* CSS Reset untuk menghilangkan margin dan padding bawaan */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Pengaturan dasar untuk body */
+body {
+    background-color: #f1f1f1;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    /* padding: 1rem; */
+}
+
+/* Container utama menggantikan .screen dengan pendekatan fleksibel */
+.container {
+    width: 100%;
+    max-width: 37.5rem; /* 600px */
+    margin: 0 auto;
+    background-color: white;
+    overflow: hidden; /* Mencegah overflow */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Header search bar dengan pendekatan fleksibel */
+.search-bar {
+    position: relative;
+    background: linear-gradient(135deg, #cf9dfe, #5af3fe);
+    padding: 1rem 0.8rem 1rem 0.35rem; /* 24px 10px */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Tombol kembali yang responsif */
+.back-btn {
+    color: #4a048b;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+    margin-right: 0.2rem;
+    flex-shrink: 0; /* Mencegah penyusutan button */
+}
+
+/* Wrapper untuk input dan tombol yang fleksibel */
+.input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Input search yang responsif */
+.input {
+    color: black;
+    border: 0.125rem solid #8707ff; /* 2px */
+    border-radius: 0.5rem; /* 8px */
+    padding: 0.625rem 4.5rem 0.625rem 0.5rem; /* 10px 40px 10px 8px */
+    background: transparent;
+    width: 100%;
+    height: 2.75rem; /* 44px */
+    outline: none;
+}
+
+.input:active, .input:focus {
+    box-shadow: 0 0 0.9375rem #a545fe inset; /* 15px */
+}
+
+/* Tombol hapus input yang responsif */
+.clear-btn {
+    position: absolute;
+    right: 2.9rem; /* 40px */
+    background-color: rgb(171, 169, 169);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background-color: #767575;
+}
+
+/* Tombol search yang responsif */
+.search-btn {
+    position: absolute;
+    right: 0.3rem;
+    border: none;
+    color: #fff;
+    background-image: linear-gradient(30deg, #936fff, #2c9caf);
+    border-radius: 0.375rem; /* 6px */
+    width: 2.1875rem; /* 35px */
+    height: 2.1875rem; /* 35px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background-position: right center;
+    background-size: 200% auto;
+    animation: pulse512 1.5s infinite;
+}
+
+@keyframes pulse512 {
+    0% {
+        box-shadow: 0 0 0 0 #8707ff;
+    }
+    
+    70% {
+        box-shadow: 0 0 0 0.625rem rgb(218 103 68 / 0%); /* 10px */
+    }
+    
+    100% {
+        box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+    }
+}
+
+/* Judul history dengan tata letak fleksibel */
+.history-title {
+    padding: 0.625rem; /* 10px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #4a048b;
+}
+
+.history-title h3 {
+    font-size: 1rem; /* 16px */
+    font-weight: 550;
+}
+
+/* Tombol hapus history yang responsif */
+.clear-history {
+    background: none;
+    border: none;
+    font-size: 0.75rem; /* 12px */
+    color: #ff3209;
+    cursor: pointer;
+}
+
+/* Box untuk predictions dan history dengan pendekatan fleksibel */
+.predictions-box, .history-box {
+    width: 100%;
+    padding: 0.4375rem 0 0.3125rem 0.625rem; /* 7px 0 5px 10px */
+    background: white;
+    border: 0.0625rem solid #c1c1c1; /* 1px */
+    border-top: none;
+    display: none; /* Sesuaikan dengan JS Anda */
+    max-height: 9.375rem; /* 150px */
+    overflow-y: auto;
+    font-size: 0.875rem; /* 14px */
+    color: #4e0494;
+}
+
+.suggestions-box div, .history-box div {
+    padding: 0.625rem; /* 10px */
+    cursor: pointer;
+}
+
+.suggestions-box:hover, .history-box div:hover {
+    background-color: #ededed;
+}
+
+/* Box "see more" yang responsif */
+.see-box {
+    width: 100%;
+    padding: 0.625rem 0; /* 10px 0 */
+    background: white;
+    text-align: center;
+    font-size: 0.875rem; /* 14px */
+    color: #4e0494;
+    cursor: pointer;
+}
+
+/* Media queries untuk layar lebih besar */
+@media screen and (min-width: 480px) {
+    /* Penyesuaian untuk tablet */
+    .container {
+        max-width: 28.125rem; /* 450px */
+    }
+    
+    .input {
+        font-size: 0.85rem; /* 16px */
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* Penyesuaian untuk desktop */
+    .container {
+        max-width: 37.5rem; /* 600px */
+    }
+    
+    .search-bar {
+        padding: 1.875rem 1.25rem; /* 30px 20px */
+    }
+    
+    .input {
+        height: 3rem; /* 48px */
+        font-size: 1.125rem; /* 18px */
+    }
+    
+    .search-btn, .clear-btn {
+        transform: scale(1.2);
+    }
+}

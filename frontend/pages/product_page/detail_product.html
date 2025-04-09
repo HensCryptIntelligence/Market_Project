@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta viewport untuk responsif -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Product</title>
+    <link rel="stylesheet" href="../../css/product_page_css/detail_product.css">
+</head>
+<body>
+    <!-- Kontainer utama responsif menggantikan .screen -->
+    <div class="product-view">
+        <!-- Search bar responsif dengan flexbox -->
+        <div class="search-bar">
+            <button class="back-btn">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <polyline points="9 6 3 12 9 18" />
+                </svg>
+            </button>
+            
+            <div class="search-container">
+                <input
+                    placeholder="Search of product..."
+                    id="search-input" 
+                    class="input"
+                    name="text"
+                    type="text"
+                    autocomplete="off"
+                >
+                <button class="clear-btn">
+                    <svg viewBox="2 0 21 24" width="15" height="15">
+                        <path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="search-btn">
+                    <svg
+                        viewBox="1 0 22 22.5"
+                        fill="none"
+                        height="18"
+                        width="18"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke="currentColor"
+                        ></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product card responsif dengan flexbox -->
+        <div class="product-card">
+            <div class="product-image">
+                <img src="laptop-stand.jpg" alt="Product Image">
+            </div>
+            
+            <div class="product-details">
+                <span class="category-info">Daily Product</span>
+
+                <div class="rating-container">
+                    <input type="checkbox" id="star-container">
+                    <label for="star-container">
+                        <svg viewBox="0 -2 24 12">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                        </svg>
+                        <svg viewBox="0 -2 24 12">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                        </svg>
+                        <svg viewBox="0 -2 24 12">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                        </svg>
+                        <svg viewBox="0 -2 24 12">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                        </svg>
+                        <svg viewBox="0 -2 24 12">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+                        </svg>
+                    </label>
+                </div>
+                
+                <p class="product-title">Product Name is...</p>      
+                <p class="price">Rp00.000</p>
+                
+                <span class="sold"><span>00</span> Tersedia | <span>00</span> Terjual</span>
+                
+                <!-- Product container dengan deskripsi responsif -->
+                <div class="product-container">
+                    <p class="short-desc">Deskripsi singkat...</p>
+
+                    <button id="toggle-btn">
+                        <span>Lihat Semua</span>
+                    </button>
+
+                    <div id="full-desc" class="full-desc">
+                        <p>Ini adalah deskripsi lengkap produk XYZ. Produk ini memiliki fitur unggulan, kualitas terbaik, dan sangat cocok untuk kebutuhan Anda. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi consequatur rerum aliquam, impedit dicta esse labore dolorem id eaque excepturi odit veniam tempore rem, vero fuga voluptatum est, corporis reprehenderit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati vel, corporis nesciunt suscipit omnis quo ullam? In sequi totam nostrum itaque ab eum, odit assumenda perspiciatis quis quaerat nam! Beatae!</p>       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product bar responsif dengan flexbox -->
+        <div class="product-bar">
+            <button class="CartBtn">
+                <span class="IconContainer"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="1 1 556 482" fill="#c592e3">
+                        <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
+                    </svg>
+                </span>
+                <p class="text">Add to Cart</p>
+            </button>
+            
+            <div class="bookmark-btn">
+                <label for="checkboxInput" class="bookmark">
+                    <input type="checkbox" id="checkboxInput" />
+                    <svg
+                        width="15"
+                        viewBox="0 0 50 75"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="svgIcon"
+                    >
+                        <path
+                            d="M46 62.0085L46 3.88139L3.99609 3.88139L3.99609 62.0085L24.5 45.5L46 62.0085Z"
+                            stroke="black"
+                            stroke-width="7"
+                        ></path>
+                    </svg>
+                </label>              
+            </div>
+            
+            <button class="buy-btn">
+                Buy Now
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript untuk fungsi tombol toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('toggle-btn');
+            const fullDesc = document.getElementById('full-desc');
+            
+            toggleBtn.addEventListener('click', function() {
+                fullDesc.classList.toggle('active');
+                toggleBtn.querySelector('span').textContent = 
+                    fullDesc.classList.contains('active') ? 'Tutup Semua' : 'Lihat Semua';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+/* CSS Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles dengan pendekatan Mobile-First */
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #f1f1f1;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container utama - Menggantikan .screen untuk pendekatan yang lebih responsif */
+.product-container {
+    width: 100%;
+    max-width: 100%;
+    background-color: white;
+    border-radius: 1.25rem;
+    margin: 4.5rem 1.5rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Product Selection Container */
+.proselect-container {
+    background: white;
+    padding: 2.1rem 2rem 1rem 2rem;
+    border-radius: 0.9375rem;
+    width: 100%;
+    box-shadow: 0 -0.25rem 0.5rem rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* Product Image */
+.product-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 0.625rem;
+    margin-bottom: 0.3125rem;
+    border: 1px solid black;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Price Section */
+.price-text {
+    font-size: 1.25rem;
+    margin: 0.7rem 0;
+}
+
+.price-number {
+    color: #FF0072;
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Quantity Section */
+.quantity-text {
+    display: flex;
+    font-size: 1.25rem;
+    align-items: center;
+    gap: 0.625rem;
+    justify-content: center;
+    margin: 0.625rem 0 0.9375rem 0;
+}
+
+.quantity-number {
+    font-size: 1.125rem;
+    padding: 0 0.625rem;
+}
+
+.quantity-layout {
+    margin: 0.3125rem 0 1.25rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Button Styles */
+.aritmetic-btn {
+    font-size: 1.125rem;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: #FF0072;
+    color: white;
+    border-radius: 0.1875rem;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.aritmetic-btn:active {
+    transform: scale(0.9);
+}
+
+.buy-btn {
+    font-size: 1.125rem;
+    letter-spacing: 0.125rem;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.7em 2em;
+    border: 0.1875rem solid #FF0072;
+    border-radius: 0.125rem;
+    position: relative;
+    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.16), 0 0.1875rem 0.375rem rgba(0, 0, 0, 0.1);
+    color: #FF0072;
+    text-decoration: none;
+    transition: 0.3s ease all;
+    z-index: 1;
+    margin: 0 0 1.25rem 0;
+    cursor: pointer;
+    width: 100%;
+    max-width: 15rem;
+}
+
+.buy-btn:before {
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    background-color: #FF0072;
+    z-index: -1;
+}
+
+.buy-btn:hover, .buy-btn:focus {
+    color: white;
+}
+
+.buy-btn:hover:before, .buy-btn:focus:before {
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+.buy-btn:active {
+    transform: scale(0.9);
+}
+
+/* Media Queries - Mobile First Approach */
+
+
+/* Larger phones (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .product-container {
+        width: 80%;
+        max-width: 25rem;
+    }
+    
+    .buy-btn {
+        padding: 0.7em 3em;
+    }
+}

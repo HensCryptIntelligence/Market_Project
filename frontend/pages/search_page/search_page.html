@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta viewport yang benar untuk responsivitas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar</title>
+    <link rel="stylesheet" href="../../css/search_bar_css/search_page.css">
+</head>
+<body>
+    <!-- Container utama menggantikan .screen -->
+    <div class="container">
+        <div class="search-bar">
+            <button onclick="window.location.href='../home_page/main_page.html';" class="back-btn">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1.5rem" 
+                    height="1.5rem" 
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <polyline points="9 6 3 12 9 18" />
+                </svg>
+            </button>
+            
+            <div class="input-wrapper">
+                <input
+                    placeholder="Search of product..."
+                    id="search-input" 
+                    class="input"
+                    name="text"
+                    type="text"
+                    autocomplete="off">
+                    
+                <button class="clear-btn">
+                    <svg viewBox="-0.9 0 23 24" width="0.9375rem" height="0.9375rem">
+                        <path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <button class="search-btn">
+                    <svg
+                        viewBox="0.1 -1.5 21 26"
+                        fill="none"
+                        height="1.5rem" 
+                        width="1.5rem" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path
+                            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke="currentColor">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="history-title">
+            <h3>History Search</h3>
+            <button class="clear-history">Hapus Semua</button>
+        </div>
+        
+        <div class="history-box" id="history"></div>
+        <div class="predictions-box" id="predictions"></div>
+        <div class="see-box">Lihat Selengkapnya</div>
+    </div>
+</body>
+</html>
