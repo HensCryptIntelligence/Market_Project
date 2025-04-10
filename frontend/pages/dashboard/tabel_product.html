@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 1rem;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .back-button {
+            font-size: 1.5rem;
+            color: #64748b;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-actions button {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background-color: #fff;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+
+        .filters-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .dropdown-container {
+            position: relative;
+        }
+
+        .per-page-select {
+            padding: 0.5rem 2rem 0.5rem 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background-color: #fff;
+            appearance: none;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .dropdown-arrow {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #64748b;
+        }
+
+        .filter-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+
+        .filter-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: #2563eb;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.75rem;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background-color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            color: #64748b;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        th:after {
+            content: "↑↓";
+            position: absolute;
+            right: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.75rem;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 0.75rem;
+        }
+
+        .user-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-name {
+            font-weight: 500;
+        }
+
+        .actions-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #64748b;
+            font-size: 1.25rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .pagination-button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            background-color: #fff;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+
+        .pagination-button.active {
+            border-color: #2563eb;
+            color: #2563eb;
+            border-width: 2px;
+        }
+
+        .pagination-button:hover:not(.active) {
+            background-color: #f1f5f9;
+        }
+
+        .pagination-text {
+            color: #64748b;
+        }
+
+        .arrow-icon {
+            font-size: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .filters-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .search-container {
+                flex: 1;
+                max-width: 20rem;
+                margin-bottom: 0;
+                margin-right: 1rem;
+            }
+
+            .table-container {
+                border-radius: 0.75rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="filters-row">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Search">
+            </div>
+
+            <div class="filters-container">
+                <div class="dropdown-container">
+                    <select class="per-page-select">
+                        <option>5 per page</option>
+                        <option>10 per page</option>
+                        <option>25 per page</option>
+                        <option>50 per page</option>
+                    </select>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+
+                <button class="filter-button">
+                    <span>Filter</span>
+                    <span class="filter-badge">1</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>OWNER</th>
+                        <th>CREATED AT</th>
+                        <th>LOCATION</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
+                                <span class="user-name">Dianna Smiley</span>
+                            </div>
+                        </td>
+                        <td>Jan 14, 2020</td>
+                        <td>CA</td>
+                        <td><button class="actions-button">⋮</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
+                                <span class="user-name">Ab Hadley</span>
+                            </div>
+                        </td>
+                        <td>Mar 22, 2020</td>
+                        <td>CA</td>
+                        <td><button class="actions-button">⋮</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
+                                <span class="user-name">Adolfo Hess</span>
+                            </div>
+                        </td>
+                        <td>Apr 01, 2020</td>
+                        <td>CA</td>
+                        <td><button class="actions-button">⋮</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
+                                <span class="user-name">Daniela Dewitt</span>
+                            </div>
+                        </td>
+                        <td>May 09, 2020</td>
+                        <td></td>
+                        <td><button class="actions-button">⋮</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="user-cell">
+                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
+                                <span class="user-name">Miyah Myles</span>
+                            </div>
+                        </td>
+                        <td>Jun 16, 2020</td>
+                        <td>CA</td>
+                        <td><button class="actions-button">⋮</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <button class="pagination-button">
+                <span class="arrow-icon">←</span>
+                <span class="pagination-text">Prev</span>
+            </button>
+            <button class="pagination-button active">1</button>
+            <button class="pagination-button">2</button>
+            <button class="pagination-button">3</button>
+            <button class="pagination-button">
+                <span class="pagination-text">Next</span>
+                <span class="arrow-icon">→</span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

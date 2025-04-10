@@ -33,9 +33,10 @@
         .menu-button {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
             color: #555;
+            padding-bottom: 0.3rem;
         }
 
         .profile {
@@ -65,11 +66,19 @@
         }
 
         .title-section {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .overview {
+            margin-bottom: 0.25rem;
+            color: #9aa0a6;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.05rem;
         }
 
         .title-section h1 {
-            font-size: 1.8rem;
+            font-size: 1.65rem;
             font-weight: 600;
             margin-bottom: 0.2rem;
             color: #2c3e50;
@@ -84,7 +93,7 @@
             display: flex;
             border-bottom: 1px solid #ddd;
             margin-bottom: 1.5rem;
-            overflow-x: auto;
+            /* overflow-x: auto; */
         }
 
         .tab {
@@ -215,21 +224,22 @@
             height: 10rem;
             border-radius: 50%;
             background: conic-gradient(
-                #007BFF 0% 60%,
-                #94a3b8 60% 85%,
-                #cbd5e1 85% 100%
+                #0f83fe 0% 40%,
+                #1af2fe 40% 65%,
+                #19fa73 65% 85%,
+                #af926a 85% 100%
             );
             position: relative;
         }
 
         .donut-hole {
             position: absolute;
-            width: 70%;
-            height: 70%;
+            width: 75%;
+            height: 75%;
             background-color: white;
             border-radius: 50%;
-            top: 15%;
-            left: 15%;
+            top: 12.5%;
+            left: 12.5%;
         }
 
         .chart-label {
@@ -274,16 +284,20 @@
             margin-right: 0.5rem;
         }
 
-        .legend-direct {
-            background-color: #007BFF;
+        .legend-daily {
+            background-color: #0f83fe;
         }
 
-        .legend-organic {
-            background-color: #94a3b8;
+        .legend-cleaner {
+            background-color: #1af2fe;
         }
 
-        .legend-referral {
-            background-color: #cbd5e1;
+        .legend-drugs {
+            background-color: #19fa73;
+        }
+
+        .legend-cigarette {
+            background-color: #af926a;
         }
 
         .sales-value {
@@ -293,14 +307,14 @@
             margin-bottom: 0.25rem;
         }
 
-        .sales-change {
+        .sales-profit {
             display: inline-block;
-            background-color: #dcfce7;
+            background-color: #c5ffd9;
             color: #16a34a;
             font-size: 0.75rem;
             font-weight: 500;
-            padding: 0.15rem 0.5rem;
-            border-radius: 1rem;
+            padding: 0.20rem 0.4rem;
+            border-radius: 0.8rem;
         }
 
         .orders-value {
@@ -369,19 +383,20 @@
 
         <main>
             <section class="title-section">
-                <h1>Traffic Channels</h1>
+                <div class="overview">OVERVIEW</div>
+                <h1>Market Profiles</h1>
             </section>
 
             <section class="tabs">
                 <div class="tab active">All</div>
-                <div class="tab">Direct</div>
+                <!-- <div class="tab">Direct</div> -->
             </section>
 
             <section class="dashboard-cards">
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">Traffic Channels</span>
-                        <span class="card-icon">$</span>
+                        <span class="card-title">Market Products</span>
+                        <span class="card-icon">#</span>
                     </div>
                     <div class="traffic-chart">
                         <div class="chart-container">
@@ -395,16 +410,20 @@
                         </div>
                         <div class="chart-legend">
                             <div class="legend-item">
-                                <span class="legend-color legend-direct"></span>
-                                <span>Direct</span>
+                                <span class="legend-color legend-daily"></span>
+                                <span>Daily</span>
                             </div>
                             <div class="legend-item">
-                                <span class="legend-color legend-organic"></span>
-                                <span>Organic</span>
+                                <span class="legend-color legend-cleaner"></span>
+                                <span>Cleaner</span>
                             </div>
                             <div class="legend-item">
-                                <span class="legend-color legend-referral"></span>
-                                <span>Referral</span>
+                                <span class="legend-color legend-drugs"></span>
+                                <span>Drugs</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color legend-cigarette"></span>
+                                <span>Cigarette</span>
                             </div>
                         </div>
                     </div>
@@ -412,30 +431,30 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">Weekly Sales</span>
+                        <span class="card-title">Total Sales</span>
                         <span class="card-icon">$</span>
                     </div>
                     <div class="sales-value">$24,500</div>
-                    <div class="sales-change">+3.5%</div>
+                    <div class="sales-profit">+0%</div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">Orders Placed</span>
+                        <span class="card-title">Total Orders</span>
                         <span class="card-icon">📦</span>
                     </div>
-                    <div class="orders-value">763.5</div>
+                    <div class="orders-value">0</div>
                 </div>
 
                 <div class="card">
                     <div class="card-header">
-                        <span class="card-title">Conversion Rate</span>
+                        <span class="card-title">Total User</span>
                         <span class="card-icon">🛒</span>
                     </div>
-                    <div class="conversion-value">84.5%</div>
-                    <div class="progress-bar">
+                    <div class="conversion-value">0</div>
+                    <!-- <div class="progress-bar">
                         <div class="progress-value"></div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
         </main>

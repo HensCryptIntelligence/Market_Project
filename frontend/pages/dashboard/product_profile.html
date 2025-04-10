@@ -87,15 +87,15 @@
         }
 
         .overview {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
             color: #9aa0a6;
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             font-weight: 500;
             letter-spacing: 0.05rem;
         }
 
         .page-title {
-            font-size: 2.2rem;
+            font-size: 1.85rem;
             font-weight: 700;
             color: #1a1d20;
             margin-bottom: 1rem;
@@ -160,8 +160,18 @@
             display: flex;
             border-bottom: 0.0625rem solid #e1e4e8;
             margin-bottom: 1rem;
-            overflow-x: auto;
+            overflow-x: scroll;
+            overflow-y: hidden;
             gap: 1rem;
+        }
+
+        .tabs {
+        overflow: scroll;
+        scrollbar-width: none; /* Firefox */
+        }
+
+        .tabs::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
         }
 
         .tab {
@@ -254,7 +264,7 @@
 
     <main>
         <div class="overview">OVERVIEW</div>
-        <h1 class="page-title">Companies</h1>
+        <h1 class="page-title">Products Management</h1>
 
         <div class="action-bar">
             <div class="view-bar">
@@ -269,13 +279,13 @@
                     </svg>
                 </button>
             </div>
-            <button class="add-company-btn">Add company</button>
+            <button class="add-company-btn">Add product</button>
         </div>
 
         <div class="tabs">
-            <div class="tab active">All companies <span class="tab-count">627</span></div>
-            <div class="tab">Your companies <span class="tab-count">198</span></div>
-            <div class="tab">Deleted</div>
+            <div class="tab active">All Products <span class="tab-count">0</span></div>
+            <div class="tab">History of Products<span class="tab-count">0</span></div>
+            <div class="tab">Deleted Products<span class="tab-count">0</span></div>
         </div>
     </main>
 </body>
