@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Companies Dashboard</title>
+    <title>Product Dashboard</title>
     <link rel="stylesheet" href="../../css/dashboard_css/tabel_product.css">
     <style>
         * {
@@ -281,7 +281,7 @@
                     </svg>
                 </button>
             </div>
-            <button class="add-company-btn">Add product</button>
+            <button class="add-company-btn" onclick="window.location.href='add_product.html'">Add of Product</button>
         </div>
 
         <div class="tabs">
@@ -302,18 +302,24 @@
             <div class="filters-container">
                 <div class="dropdown-container">
                     <select class="per-page-select">
-                        <option>5 per page</option>
-                        <option>10 per page</option>
-                        <option>25 per page</option>
-                        <option>50 per page</option>
+                        <option>5 Pages</option>
+                        <option>10 Pages</option>
+                        <option>25 Pages</option>
+                        <option>50 Pages</option>
                     </select>
                     <span class="dropdown-arrow">▼</span>
                 </div>
 
-                <button class="filter-button">
-                    <span>Filter</span>
-                    <span class="filter-badge">1</span>
-                </button>
+                <div class="dropdown-container">
+                    <select class="per-page-select">
+                        <option>All Products</option>
+                        <option>Daily</option>
+                        <option>Cleaner</option>
+                        <option>Drugs</option>
+                        <option>Cigarette</option>
+                    </select>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
             </div>
         </div>
 

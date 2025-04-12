@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Form</title>
+    <style>
+        /* Reset dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            background-color: #f5f5f5;
+        }
+
+        /* Container utama */
+        .add-product-container {
+            width: 100%;
+            max-width: 28rem; /* 450px dalam rem */
+            background: #FFFFFF;
+            box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.05),
+                        0 0.5rem 2rem rgba(0, 0, 0, 0.1);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        /* Form tambah produk */
+        .add-product-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: 1.5rem;
+        }
+
+        /* Upload file area */
+        .custom-file-upload {
+            height: 12rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.25rem;
+            cursor: pointer;
+            border: 0.125rem dashed #cacaca;
+            background-color: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 0.625rem;
+            box-shadow: 0 3rem 2rem -3rem rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .custom-file-upload:hover {
+            border-color: #242424;
+        }
+
+        .custom-file-upload .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .custom-file-upload .icon svg {
+            height: 5rem;
+            fill: #4B5563;
+        }
+
+        .custom-file-upload .text {
+            text-align: center;
+        }
+
+        .custom-file-upload .text span {
+            font-weight: 400;
+            color: #4B5563;
+            font-size: 0.875rem;
+        }
+
+        .custom-file-upload input {
+            display: none;
+        }
+
+        /* Separator dengan teks di tengah */
+        .separator {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0.625rem;
+            color: #8B8E98;
+            margin: 0.5rem 0;
+            align-items: center;
+        }
+
+        .separator p {
+            font-weight: 600;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .separator .line {
+            height: 0.0625rem;
+            background-color: #e8e8e8;
+            width: 100%;
+        }
+
+        /* Form input container */
+        .product-info-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3125rem;
+        }
+
+        /* Flex split untuk two-columns layout */
+        .split {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+
+        .input-label {
+            font-size: 0.75rem;
+            color: #8B8E98;
+            font-weight: 600;
+        }
+
+        .input-field {
+            width: 100%;
+            height: 2.5rem;
+            padding: 0 0 0 0.875rem;
+            border-radius: 0.5625rem;
+            outline: none;
+            background-color: #F2F2F2;
+            border: 0.0625rem solid transparent;
+            transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+            font-size: 0.875rem;
+        }
+
+        .input-field:focus {
+            border: 0.0625rem solid transparent;
+            box-shadow: 0 0 0 0.125rem #242424;
+            background-color: #FFFFFF;
+        }
+
+        .textarea-field {
+            width: 100%;
+            min-height: 5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5625rem;
+            outline: none;
+            background-color: #F2F2F2;
+            border: 0.0625rem solid transparent;
+            transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+            font-family: inherit;
+            font-size: 0.875rem;
+            resize: vertical;
+        }
+
+        .textarea-field:focus {
+            border: 0.0625rem solid transparent;
+            box-shadow: 0 0 0 0.125rem #242424;
+            background-color: #FFFFFF;
+        }
+
+        /* Dropdown styling */
+        .dropdown-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .category-select {
+            width: 100%;
+            padding: 0.5rem 2rem 0.5rem 0.75rem;
+            border: 0.0625rem solid transparent;
+            border-radius: 0.3625rem;
+            background-color: #F2F2F2;
+            appearance: none;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+        }
+
+        .category-select:focus {
+            border: 0.0625rem solid transparent;
+            box-shadow: 0 0 0 0.125rem #242424;
+            background-color: #FFFFFF;
+        }
+
+        .dropdown-arrow {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #64748b;
+            font-size: 0.625rem;
+        }
+
+        /* Button styling */
+        .submit-btn {
+            width: 100%;
+            height: 3.4375rem;
+            background: linear-gradient(180deg, #363636 0%, #1B1B1B 50%, #000000 100%);
+            border-radius: 0.6875rem;
+            border: 0;
+            outline: none;
+            color: #FFFFFF;
+            font-size: 0.9375rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 0 0 0 #FFFFFF, 0 0 0 0 #000000;
+            transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 0 0.125rem #FFFFFF, 0 0 0 0.25rem rgba(0, 0, 0, 0.3);
+        }
+
+        /* Menghilangkan arrows pada input number */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        /* input[type="number"] {
+            -moz-appearance: textfield;
+        } */
+
+        /* Media queries untuk responsivitas */
+        @media screen and (max-width: 480px) {
+            .add-product-form {
+                padding: 1rem;
+            }
+            
+            .split {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .custom-file-upload {
+                height: 10rem;
+            }
+            
+            .custom-file-upload .icon svg {
+                height: 4rem;
+            }
+            
+            .submit-btn {
+                height: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Container utama form tambah produk -->
+        <section class="add-product-container">
+            <form class="add-product-form">
+                <!-- Area upload file dengan custom design -->
+                <label class="custom-file-upload" for="product-image">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Klik untuk mengunggah gambar produk</span>
+                    </div>
+                    <input type="file" id="product-image" accept="image/*">
+                </label>
+
+                <!-- Separator dengan teks di tengah -->
+                <div class="separator">
+                    <div class="line"></div>
+                    <p>Insert your data of products</p>
+                    <div class="line"></div>
+                </div>
+                
+                <!-- Form untuk informasi produk -->
+                <div class="product-info-form">
+                    <!-- Nama Produk -->
+                    <div class="input-container">
+                        <label for="product-name" class="input-label">Name of Product</label>
+                        <input id="product-name" class="input-field" type="text" name="product-name" placeholder="Enter name">
+                    </div>
+                    
+                    <!-- Deskripsi Produk -->
+                    <div class="input-container">
+                        <label for="product-desc" class="input-label">Description of Product</label>
+                        <textarea id="product-desc" class="textarea-field" name="product-desc" placeholder="Description is ...."></textarea>
+                    </div>
+                    
+                    <!-- Split layout untuk harga dan stok -->
+                    <div class="split">
+                        <!-- Harga Produk -->
+                        <div class="input-container">
+                            <label for="product-price" class="input-label">Price of Product</label>
+                            <input id="product-price" class="input-field" type="text" name="product-price" placeholder="Rp">
+                        </div>
+                        
+                        <!-- Stok Produk -->
+                        <div class="input-container">
+                            <label for="product-stock" class="input-label">Stock of Product</label>
+                            <input id="product-stock" class="input-field" type="number" name="product-stock" placeholder="0" min="0">
+                        </div>
+                    </div>
+                    
+                    <!-- Kategori Produk -->
+                    <div class="input-container">
+                        <label for="product-category" class="input-label">Kategory of Product</label>
+                        <div class="dropdown-container">
+                            <select id="product-category" class="category-select" name="product-category">
+                                <option value="" disabled selected>Choose of Category</option>
+                                <option value="daily">Daily</option>
+                                <option value="cleaner">Cleaner</option>
+                                <option value="drugs">Drugs</option>
+                                <option value="cigarette">Cigarette</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tombol submit -->
+                <button type="submit" class="submit-btn">Add of Product</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Script untuk menampilkan preview gambar (opsional)
+        document.getElementById('product-image').addEventListener('change', function(event) {
+            // Di sini bisa ditambahkan kode untuk preview gambar jika diperlukan
+            console.log('File dipilih:', event.target.files[0]?.name || 'Tidak ada file');
+        });
+
+        // Validasi form sebelum submit
+        document.querySelector('.add-product-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Logika validasi form bisa ditambahkan di sini
+            console.log('Form disubmit!');
+            
+            // Jika validasi sukses, form bisa disubmit
+            // this.submit();
+        });
+    </script>
+</body>
+</html>
