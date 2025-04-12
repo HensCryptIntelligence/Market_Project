@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    
     <style>
         * {
             margin: 0;
@@ -19,7 +20,7 @@
             line-height: 1.5;
         }
 
-        .container {
+        .container-table {
             max-width: 100%;
             padding: 1rem;
         }
@@ -137,24 +138,33 @@
             margin-bottom: 1rem;
         }
 
+        .table-container {
+        overflow: scroll;
+        scrollbar-width: none; /* Firefox */
+        }
+
+        .table-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 600px;
+            min-width: 1050px;
         }
 
         th {
-            padding: 1rem;
+            padding: 1rem 1rem;
             text-align: left;
             color: #64748b;
             font-weight: 500;
             border-bottom: 1px solid #e2e8f0;
             position: relative;
             cursor: pointer;
+            text-wrap: nowrap;
         }
 
         th:after {
-            content: "↑↓";
             position: absolute;
             right: 0.5rem;
             color: #cbd5e1;
@@ -162,7 +172,9 @@
         }
 
         td {
-            padding: 1rem;
+            text-align: center;
+            padding: 1rem 1rem;
+            text-wrap: nowrap;
             border-bottom: 1px solid #e2e8f0;
         }
 
@@ -172,23 +184,6 @@
 
         tr:hover {
             background-color: #f1f5f9;
-        }
-
-        .avatar {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 0.75rem;
-        }
-
-        .user-cell {
-            display: flex;
-            align-items: center;
-        }
-
-        .user-name {
-            font-weight: 500;
         }
 
         .actions-button {
@@ -218,7 +213,7 @@
             color: #64748b;
         }
 
-        .pagination-button.active {
+        .pagination-button:hover {
             border-color: #2563eb;
             color: #2563eb;
             border-width: 2px;
@@ -269,7 +264,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-table">
 
         <div class="filters-row">
             <div class="search-container">
@@ -290,7 +285,7 @@
 
                 <button class="filter-button">
                     <span>Filter</span>
-                    <span class="filter-badge">1</span>
+                    <span class="filter-badge">4</span>
                 </button>
             </div>
         </div>
@@ -299,66 +294,83 @@
             <table>
                 <thead>
                     <tr>
-                        <th>OWNER</th>
-                        <th>CREATED AT</th>
-                        <th>LOCATION</th>
-                        <th></th>
+                        <th>NO</th>
+                        <th>NAMA PRODUK</th>
+                        <th>DESKRIPSI</th>
+                        <th>HARGA</th>
+                        <th>STOK</th>
+                        <th>TERJUAL</th>
+                        <th>KATEGORI</th>
+                        <th>DIBUAT</th>
+                        <th>DIPERBARUI</th>
+                        <th>GAMBAR</th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <div class="user-cell">
-                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
-                                <span class="user-name">Dianna Smiley</span>
-                            </div>
-                        </td>
-                        <td>Jan 14, 2020</td>
-                        <td>CA</td>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
                         <td><button class="actions-button">⋮</button></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="user-cell">
-                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
-                                <span class="user-name">Ab Hadley</span>
-                            </div>
-                        </td>
-                        <td>Mar 22, 2020</td>
-                        <td>CA</td>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
                         <td><button class="actions-button">⋮</button></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="user-cell">
-                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
-                                <span class="user-name">Adolfo Hess</span>
-                            </div>
-                        </td>
-                        <td>Apr 01, 2020</td>
-                        <td>CA</td>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
                         <td><button class="actions-button">⋮</button></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="user-cell">
-                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
-                                <span class="user-name">Daniela Dewitt</span>
-                            </div>
-                        </td>
-                        <td>May 09, 2020</td>
-                        <td></td>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
                         <td><button class="actions-button">⋮</button></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="user-cell">
-                                <img src="/api/placeholder/40/40" alt="User avatar" class="avatar">
-                                <span class="user-name">Miyah Myles</span>
-                            </div>
-                        </td>
-                        <td>Jun 16, 2020</td>
-                        <td>CA</td>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
                         <td><button class="actions-button">⋮</button></td>
                     </tr>
                 </tbody>
@@ -370,9 +382,10 @@
                 <span class="arrow-icon">←</span>
                 <span class="pagination-text">Prev</span>
             </button>
-            <button class="pagination-button active">1</button>
+            <button class="pagination-button">1</button>
             <button class="pagination-button">2</button>
             <button class="pagination-button">3</button>
+
             <button class="pagination-button">
                 <span class="pagination-text">Next</span>
                 <span class="arrow-icon">→</span>

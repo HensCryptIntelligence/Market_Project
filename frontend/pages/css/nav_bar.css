@@ -1,0 +1,82 @@
+ /* Navigation bar styles - fleksibel dan responsif */
+ .navbar {
+    width: 100%;
+    background-color: rgb(135, 7, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 -0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+    padding: 0.25rem 0;
+}
+
+.nav-items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 25rem; /* Batasi lebar maksimum pada layar besar */
+    list-style: none;
+    padding: 0 1rem;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-0.25rem);
+}
+
+.nav-btn svg {
+    width: 1.5rem; /* 24px dalam rem */
+    height: 1.5rem;
+    color: #fcfcfc;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover svg {
+    color: rgb(0, 255, 204);
+    opacity: 1;
+}
+
+.nav-btn.active svg {
+    color: rgb(0, 255, 204);
+    opacity: 1;
+}
+
+/* Media queries untuk responsivitas */
+/* Tablet */
+@media screen and (min-width: 48rem) { /* 768px */
+    main {
+        max-width: 48rem;
+        margin: 2rem auto;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+    
+    .nav-btn svg {
+        width: 1.75rem; /* Ukuran ikon lebih besar pada layar besar */
+        height: 1.75rem;
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 64rem) { /* 1024px */
+    main {
+        max-width: 64rem;
+        margin: 3rem auto;
+    }
+    
+    .navbar {
+        padding: 0.75rem 0;
+    }
+    
+    .nav-items {
+        max-width: 30rem;
+    }
+}

@@ -1,0 +1,241 @@
+.container-table {
+    max-width: 100%;
+    padding: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.back-button {
+    font-size: 1.5rem;
+    color: #64748b;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-actions button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.search-container {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background-color: #fff;
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.filters-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.dropdown-container {
+    position: relative;
+}
+
+.per-page-select {
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    appearance: none;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.dropdown-arrow {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #64748b;
+}
+
+.filter-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.filter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #2563eb;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 0.75rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+
+.table-container {
+overflow: scroll;
+scrollbar-width: none; /* Firefox */
+}
+
+.table-container::-webkit-scrollbar {
+display: none; /* Chrome, Safari */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1050px;
+}
+
+th {
+    padding: 1rem 1rem;
+    text-align: left;
+    color: #64748b;
+    font-weight: 500;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+    cursor: pointer;
+    text-wrap: nowrap;
+}
+
+th:after {
+    position: absolute;
+    right: 0.5rem;
+    color: #cbd5e1;
+    font-size: 0.75rem;
+}
+
+td {
+    text-align: center;
+    padding: 1rem 1rem;
+    text-wrap: nowrap;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f1f5f9;
+}
+
+.actions-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #64748b;
+    font-size: 1.25rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.pagination-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e2e8f0;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+}
+
+.pagination-button:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    border-width: 2px;
+}
+
+.pagination-button:hover:not(.active) {
+    background-color: #f1f5f9;
+}
+
+.pagination-text {
+    color: #64748b;
+}
+
+.arrow-icon {
+    font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    .filters-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .search-container {
+        flex: 1;
+        max-width: 20rem;
+        margin-bottom: 0;
+        margin-right: 1rem;
+    }
+
+    .table-container {
+        border-radius: 0.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+}

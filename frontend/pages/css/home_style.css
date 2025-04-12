@@ -1,0 +1,42 @@
+ /* CSS Reset - menghilangkan margin dan padding bawaan browser */
+ *,
+ *::before,
+ *::after {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ /* Pengaturan dasar untuk font dan units pada root element */
+ html {
+     font-size: 16px; /* Basis untuk rem units */
+     font-family: Arial, sans-serif;
+ }
+
+ body {
+     /* min-height: 100vh; Gunakan minimal tinggi viewport */
+     background-color: #f1f1f1;
+     display: flex;
+     flex-direction: column; /* Mengatur tata letak vertikal */
+ }
+
+ /* Menggunakan main sebagai container utama aplikasi - menggantikan "smartphone" dan "screen" */
+ .app-container {
+     flex: 1; /* Mengisi ruangan yang tersedia */
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     position: relative;
+     background-color: white;
+     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+ }
+
+ .content-area {
+    flex: 1; /* Mengisi ruangan yang tersedia */
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     position: relative;
+     background-color: white;
+     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+ }
