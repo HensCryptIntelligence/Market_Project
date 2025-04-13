@@ -3,22 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Interface</title>
-    <link rel="stylesheet" href="../../css/dashboard_css/market_profile.css">
+    <title>AdminKit Dashboard</title>
     <link rel="stylesheet" href="../../css/dashboard_css/sidebar_nav.css">
+    <style>
+        /* Base styling and reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f7;
+            color: #333;
+            font-size: 1rem;
+        }
+
+        /* Layout structure */
+        .container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header styling */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            height: 3.5rem;
+        }
+
+        .top-bar .domain {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .top-bar .actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Sidebar styling */
+        .sidebar-container {
+            background-color: #1f2937;
+            color: #fff;
+            width: 16rem;
+            height: 100vh;
+            position: fixed;
+            top: 3.5rem;
+            left: 0;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 99;
+        }
+
+            /* Untuk elemen tertentu */
+        .sidebar-container {
+        overflow: scroll;
+        scrollbar-width: none; /* Firefox */
+        }
+
+        .sidebar-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+        }
+
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .brand-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .pro-badge {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.3rem;
+            font-size: 0.65rem;
+            margin-left: 0.5rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0.2rem 1rem 0 0;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            margin: 0 0 0.1rem 0;
+        }
+
+        .user-role {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation sections */
+        .nav-section {
+            padding: 1rem 0;
+        }
+
+        .section-title {
+            padding: 0.5rem 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: #9ca3af;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: #fff;
+            border-left: 4px solid #3b82f6;
+            padding-left: calc(1.5rem - 4px);
+        }
+
+        .nav-icon {
+            margin-right: 0.75rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .nav-link {
+            flex: 1;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .dropdown-icon {
+            margin-left: 0.5rem;
+        }
+
+        /* Special items styling */
+        .badge {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.3rem;
+            font-size: 0.75rem;
+            margin-left: auto;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            margin-left: 16rem;
+            padding: 4.5rem 1.5rem 1.5rem;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.full-width {
+            margin-left: 0;
+        }
+
+        /* Dashboard cards */
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            margin-bottom: 1rem;
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .balance-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .percentage {
+            color: #10b981;
+            font-weight: 500;
+        }
+
+        /* Cryptocurrency pairs */
+        .crypto-pair {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .pair-name {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .pair-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .volume {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Toggle button for sidebar */
+        .toggle-sidebar {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 80%;
+                max-width: 16rem;
+            }
+            
+            .sidebar-visible {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Overlay for mobile when sidebar is open */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 98;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header class="header-profile">
-        <button class="toggle-sidebar" id="toggleSidebar">☰</button>
-        <div class="dashboard-title">DASHBOARD</div>
-        <div class="user-account">
-            <img src="/api/placeholder/60/60" alt="User Profile">
-            <div class="status-indicator"></div>
+    <!-- Top navigation bar -->
+    <header class="top-bar">
+        <button class="toggle-sidebar" id="toggleSidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <span class="domain">demo.adminkit.io</span>
+        <div class="actions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
         </div>
     </header>
 
-        <div class="container">
-
+    <div class="container">
         <!-- Overlay for mobile -->
         <div class="overlay" id="overlay"></div>
         
@@ -55,7 +377,7 @@
                                 <line x1="9" y1="21" x2="9" y2="9"></line>
                             </svg>
                         </div>
-                        <a href="market_profile.html" class="nav-link">Dashboards</a>
+                        <a href="#" class="nav-link">Dashboards</a>
                         <div class="dropdown-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -69,7 +391,7 @@
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
                         </div>
-                        <a href="users_profile.html" class="nav-link">Users</a>
+                        <a href="#" class="nav-link">Users</a>
                         <div class="dropdown-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -83,7 +405,7 @@
                                 <line x1="1" y1="10" x2="23" y2="10"></line>
                             </svg>
                         </div>
-                        <a href="product_profile.html" class="nav-link">Products</a>
+                        <a href="#" class="nav-link">Products</a>
                         <div class="dropdown-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="9 18 15 12 9 6"></polyline>
@@ -210,85 +532,58 @@
             </nav>
         </aside>
 
+        <!-- Main content area -->
         <main class="main-content" id="mainContent">
-            <section class="title-section">
-                <div class="overview">OVERVIEW</div>
-                <h1>Market Profiles</h1>
-            </section>
-
-            <section class="tabs">
-                <div class="tab active">All</div>
-                <!-- <div class="tab">Direct</div> -->
-            </section>
-
-            <section class="dashboard-cards">
+            <div class="dashboard-cards">
                 <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Market Products</span>
-                        <span class="card-icon">#</span>
-                    </div>
-                    <div class="traffic-chart">
-                        <div class="chart-container">
-                            <div class="donut-chart">
-                                <div class="donut-hole"></div>
-                                <div class="chart-label">
-                                    <div class="chart-label-title">Direct</div>
-                                    <div class="chart-label-value">60%</div>
-                                </div>
-                            </div>
+                    <div class="card-header">Total balance</div>
+                    <div class="card-content">
+                        <div>
+                            <span class="balance-value">$53,252</span>
+                            <span>2.3</span>
                         </div>
-                        <div class="chart-legend">
-                            <div class="legend-item">
-                                <span class="legend-color legend-daily"></span>
-                                <span>Daily</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color legend-cleaner"></span>
-                                <span>Cleaner</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color legend-drugs"></span>
-                                <span>Drugs</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color legend-cigarette"></span>
-                                <span>Cigarette</span>
-                            </div>
+                        <div>
+                            <span class="percentage">+6.15%</span>
+                            <span>Since last week</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Total Sales</span>
-                        <span class="card-icon">$</span>
+                    <div class="card-header">USD/BTC</div>
+                    <div class="card-content">
+                        <div class="crypto-pair">
+                            <span class="pair-value">$23,077.05</span>
+                        </div>
+                        <div class="volume">Volume: 132,693</div>
                     </div>
-                    <div class="sales-value">$24,500</div>
-                    <div class="sales-profit">+0%</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Total Orders</span>
-                        <span class="card-icon">📦</span>
+                    <div class="card-header">LTC/BTC</div>
+                    <div class="card-content">
+                        <div class="crypto-pair">
+                            <span class="pair-value">0.00256</span>
+                            <span>$59</span>
+                        </div>
+                        <div class="volume">Volume: 31,268</div>
                     </div>
-                    <div class="orders-value">0</div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Total User</span>
-                        <span class="card-icon">🛒</span>
+                    <div class="card-header">ETH/BTC</div>
+                    <div class="card-content">
+                        <div class="crypto-pair">
+                            <span class="pair-value">0.07334</span>
+                            <span>$1,689</span>
+                        </div>
+                        <div class="volume">Volume: 32,982</div>
                     </div>
-                    <div class="conversion-value">0</div>
-                    <!-- <div class="progress-bar">
-                        <div class="progress-value"></div>
-                    </div> -->
                 </div>
-            </section>
+            </div>
         </main>
     </div>
-    
+
     <script>
         // Get DOM elements
         const toggleBtn = document.getElementById('toggleSidebar');
@@ -314,13 +609,10 @@
         
         // Toggle sidebar visibility
         function toggleSidebar() {
-        console.log("Toggle sidebar called");
             if (isMobile()) {
-                console.log("Mobile mode detected");
                 sidebar.classList.toggle('sidebar-visible');
                 overlay.classList.toggle('active');
             } else {
-                console.log("Desktop mode detected");
                 sidebar.classList.toggle('sidebar-hidden');
                 mainContent.classList.toggle('full-width');
             }
