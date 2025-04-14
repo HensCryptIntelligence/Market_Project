@@ -298,7 +298,13 @@
                         <td>Mar 2, 2020</td>
                         <td>April 2, 2020</td>
                         <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
@@ -417,6 +423,35 @@
         
         // Run initial setup
         setupInitialState();
+
+        // Toggle editing code program
+
+        function toggleDropdown(button) {
+        document.querySelectorAll('.edit-dropdown').forEach(drop => {
+            if (drop !== button.nextElementSibling) drop.style.display = 'none';
+        });
+
+        const dropdown = button.nextElementSibling;
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function editProduct() {
+        alert('Fitur edit belum diimplementasikan.');
+        }
+
+        function deleteProduct() {
+        const confirmDelete = confirm('Yakin ingin menghapus produk ini?');
+        if (confirmDelete) {
+            alert('Produk dihapus (simulasi).');
+        }
+        }
+
+        window.addEventListener('click', function(e) {
+        if (!e.target.matches('.edit-toggle')) {
+            document.querySelectorAll('.edit-dropdown').forEach(drop => drop.style.display = 'none');
+        }
+        });
+
     </script>
 </body>
 </html>
