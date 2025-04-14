@@ -247,12 +247,12 @@
 
             <div class="filters-container">
                 <div class="dropdown-container">
-                    <select class="per-page-select">
-                        <option>5 Pages</option>
-                        <option>10 Pages</option>
-                        <option>25 Pages</option>
-                        <option>50 Pages</option>
-                    </select>
+                    <select class="per-page-select" id="rowsPerPage">
+                        <option value="5">5 Pages</option>
+                        <option value="10">10 Pages</option>
+                        <option value="15">15 Pages</option>
+                        <option value="30">30 Pages</option>
+                      </select>                      
                     <span class="dropdown-arrow">▼</span>
                 </div>
 
@@ -317,7 +317,13 @@
                         <td>Mar 2, 2020</td>
                         <td>April 2, 2020</td>
                         <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
@@ -330,7 +336,13 @@
                         <td>Mar 2, 2020</td>
                         <td>April 2, 2020</td>
                         <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
@@ -343,7 +355,13 @@
                         <td>Mar 2, 2020</td>
                         <td>April 2, 2020</td>
                         <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
@@ -356,25 +374,154 @@
                         <td>Mar 2, 2020</td>
                         <td>April 2, 2020</td>
                         <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Name Product</td>
+                        <td>This is product...</td>
+                        <td>Rp. 000</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>Daily Product</td>
+                        <td>Mar 2, 2020</td>
+                        <td>April 2, 2020</td>
+                        <td>/c/67f72a88-96a4-800a-8f9f</td>
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editProduct()">Edit</button>
+                              <button onclick="deleteProduct()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                   
                 </tbody>
             </table>
         </div>
 
         <div class="pagination">
-            <button class="pagination-button">
-                <span class="arrow-icon">←</span>
-                <span class="pagination-text">Prev</span>
-            </button>
-            <button class="pagination-button">1</button>
-            <button class="pagination-button">2</button>
-            <button class="pagination-button">3</button>
-
-            <button class="pagination-button">
-                <span class="pagination-text">Next</span>
-                <span class="arrow-icon">→</span>
-            </button>
+            
         </div>
     </div>
     <script>
@@ -427,30 +574,143 @@
         // Toggle editing code program
 
         function toggleDropdown(button) {
-        document.querySelectorAll('.edit-dropdown').forEach(drop => {
-            if (drop !== button.nextElementSibling) drop.style.display = 'none';
-        });
+            const dropdown = button.nextElementSibling;
 
-        const dropdown = button.nextElementSibling;
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            // Tutup semua dropdown lain
+            document.querySelectorAll('.edit-dropdown').forEach(drop => {
+            if (drop !== dropdown) {
+                drop.classList.remove('show');
+                setTimeout(() => {
+                drop.style.display = 'none';
+                }, 200); // waktu tunggu sebelum sembunyi total (sesuai animasi CSS)
+            }
+            });
+
+            // Toggle dropdown yang ditekan
+            if (dropdown.classList.contains('show')) {
+            dropdown.classList.remove('show');
+            setTimeout(() => {
+                dropdown.style.display = 'none';
+            }, 200);
+            } else {
+            dropdown.style.display = 'flex'; // atau 'block' tergantung struktur dropdown-mu
+            void dropdown.offsetWidth; // trigger reflow untuk animasi
+            dropdown.classList.add('show');
+            }
         }
 
         function editProduct() {
-        alert('Fitur edit belum diimplementasikan.');
+            alert('Fitur edit belum diimplementasikan.');
         }
 
         function deleteProduct() {
-        const confirmDelete = confirm('Yakin ingin menghapus produk ini?');
-        if (confirmDelete) {
+            const confirmDelete = confirm('Yakin ingin menghapus produk ini?');
+            if (confirmDelete) {
             alert('Produk dihapus (simulasi).');
-        }
+            }
         }
 
-        window.addEventListener('click', function(e) {
-        if (!e.target.matches('.edit-toggle')) {
-            document.querySelectorAll('.edit-dropdown').forEach(drop => drop.style.display = 'none');
-        }
+        // Tutup dropdown saat klik di luar area tombol dan dropdown
+        window.addEventListener('click', function (e) {
+            if (
+            !e.target.matches('.edit-toggle') &&
+            !e.target.closest('.edit-dropdown')
+            ) {
+            document.querySelectorAll('.edit-dropdown').forEach(drop => {
+                drop.classList.remove('show');
+                setTimeout(() => {
+                drop.style.display = 'none';
+                }, 200);
+            });
+            }
         });
+
+        // Pagination code program
+
+
+        // Ambil elemen-elemen yang dibutuhkan dari DOM
+        const tableBody = document.querySelector('tbody'); // Badan tabel
+        const rowsPerPageSelect = document.getElementById('rowsPerPage'); // Dropdown jumlah baris
+        const paginationContainer = document.querySelector('.pagination'); // Container untuk tombol pagination
+        const allRows = Array.from(tableBody.querySelectorAll('tr')); // Ambil semua baris data produk
+        let currentPage = 1; // Halaman saat ini (default: 1)
+        let rowsPerPage = parseInt(rowsPerPageSelect.value); // Jumlah baris per halaman
+
+        // Fungsi untuk menampilkan baris tabel sesuai halaman & jumlah baris per halaman
+        function renderTable() {
+            const start = (currentPage - 1) * rowsPerPage; // Index awal baris
+            const end = start + rowsPerPage; // Index akhir baris
+
+            // Tampilkan hanya baris yang masuk dalam range [start, end)
+            allRows.forEach((row, index) => {
+            row.style.display = index >= start && index < end ? '' : 'none';
+            });
+
+            // Render ulang pagination setelah tabel diperbarui
+            renderPagination();
+        }
+
+        // Fungsi untuk membuat tombol pagination dinamis
+        function renderPagination() {
+            const totalPages = Math.ceil(allRows.length / rowsPerPage); // Hitung total halaman
+            paginationContainer.innerHTML = ''; // Kosongkan isi sebelumnya
+
+            // Tombol Prev
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'pagination-button';
+            prevBtn.innerHTML = `
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="4.5 0 22 22"
+            stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6" />
+            </svg>
+            <span class="pagination-text">Prev</span>
+            `;
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => {
+            currentPage--;
+            renderTable();
+            };
+            paginationContainer.appendChild(prevBtn);
+
+            // Tombol halaman (angka)
+            for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = 'pagination-button';
+            if (i === currentPage) pageBtn.classList.add('active'); // Tambahkan style aktif
+            pageBtn.textContent = i;
+            pageBtn.onclick = () => {
+                currentPage = i;
+                renderTable();
+            };
+            paginationContainer.appendChild(pageBtn);
+            }
+
+            // Tombol Next
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'pagination-button';
+            nextBtn.innerHTML = `
+            <span class="pagination-text">Next</span>
+            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="-4.5 0 22 22" stroke="currentColor" stroke-width="2">
+                <polyline points="9 6 15 12 9 18" />
+            </svg>
+            `;
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => {
+            currentPage++;
+            renderTable();
+            };
+            paginationContainer.appendChild(nextBtn);
+        }
+
+        // Event ketika dropdown jumlah baris diubah
+        rowsPerPageSelect.addEventListener('change', () => {
+            rowsPerPage = parseInt(rowsPerPageSelect.value); // Ambil nilai baru
+            currentPage = 1; // Kembali ke halaman 1
+            renderTable();
+        });
+
+        // Jalankan saat halaman pertama kali dimuat
+        renderTable();
 
     </script>
 </body>

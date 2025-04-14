@@ -149,21 +149,28 @@ tr:hover {
   }
 
   .edit-dropdown {
-    display: flex;
-    flex-direction: column; /* kunci utama agar item tampil vertikal */
+    display: none;
+    opacity: 0;
+    transform: scale(0.35);
+    transition: opacity 0.15s ease, transform 0.15s ease;
     position: absolute;
-    top: 50%;
-    right: 100%; /* Tampilkan di sebelah kiri tombol */
-    transform: translateY(-50%); /* Tengah secara vertikal */
+    top: 0;
+    right: 100%;
+    transform: translateX(50%) scale(0.35); /* transform disatukan */
     background-color: white;
     border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    padding: 0.25rem 0;
+    border-radius: 0.3rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 10;
     min-width: 6rem;
-}
-
+    flex-direction: column;
+  }
+  
+  .edit-dropdown.show {
+    opacity: 1;
+    transform: translateX(10px) scale(1);
+  }
+  
 /* Untuk tombol/tulisan di dalam dropdown */
 .edit-dropdown button {
     display: block;
@@ -180,9 +187,9 @@ tr:hover {
 }
 
 
-  .edit-container {
+.edit-container {
     position: relative;
-  }
+}
 
 
 .actions-button {
@@ -201,7 +208,7 @@ tr:hover {
 }
 
 .pagination-button {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     border: 1px solid #e2e8f0;
     background-color: #fff;
     border-radius: 0.25rem;
@@ -215,7 +222,7 @@ tr:hover {
 .pagination-button:hover {
     border-color: #2563eb;
     color: #2563eb;
-    border-width: 2px;
+    border-width: 1.5px;
 }
 
 .pagination-button:hover:not(.active) {
@@ -227,7 +234,10 @@ tr:hover {
 }
 
 .arrow-icon {
-    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+    stroke: grey; /* Warna panah */
+    vertical-align: middle;
 }
 
 @media (min-width: 640px) {
