@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users Dashboard</title>
     <link rel="stylesheet" href="../../css/dashboard_css/sidebar_nav.css">
-    <link rel="stylesheet" href="../../css/dashboard_css/users_table.css">
-    <link rel="stylesheet" href="../../css/dashboard_css/design_table.css">
+    <link rel="stylesheet" href="../../css/dashboard_css/product_table.css">    
+    <link rel="stylesheet" href="../../css/dashboard_css/design_table.css">  
 </head>
 <body>
     <header class="header-profile">
@@ -226,7 +226,7 @@
                     </svg>
                 </button>
             </div>
-            <button class="add-company-btn" onclick="window.location.href='add_product.html'">Add of Users</button>
+            <button class="add-company-btn" onclick="window.location.href='add_product.html'">Add of User</button>
         </div>
 
         <div class="tabs">
@@ -247,22 +247,20 @@
 
             <div class="filters-container">
                 <div class="dropdown-container">
-                    <select class="per-page-select">
-                        <option>5 Pages</option>
-                        <option>10 Pages</option>
-                        <option>25 Pages</option>
-                        <option>50 Pages</option>
-                    </select>
+                    <select class="per-page-select" id="rowsPerPage">
+                        <option value="5">5 Pages</option>
+                        <option value="10">10 Pages</option>
+                        <option value="15">15 Pages</option>
+                        <option value="30">30 Pages</option>
+                      </select>                      
                     <span class="dropdown-arrow">▼</span>
                 </div>
 
                 <div class="dropdown-container">
                     <select class="per-page-select">
-                        <option>All Products</option>
-                        <option>Daily</option>
-                        <option>Cleaner</option>
-                        <option>Drugs</option>
-                        <option>Cigarette</option>
+                        <option>All Users</option>
+                        <option>Online Users</option>
+                        <option>Offline Users</option>
                     </select>
                     <span class="dropdown-arrow">▼</span>
                 </div>
@@ -274,149 +272,197 @@
                 <thead>
                     <tr>
                         <th>NO</th>
-                        <th>NAMA PRODUK</th>
-                        <th>DESKRIPSI</th>
-                        <th>HARGA</th>
-                        <th>STOK</th>
-                        <th>TERJUAL</th>
-                        <th>KATEGORI</th>
-                        <th>DIBUAT</th>
-                        <th>DIPERBARUI</th>
-                        <th>GAMBAR</th>
+                        <th>NAMA LENGKAP</th>
+                        <th>EMAIL</th>
+                        <th>USERNAME</th>
+                        <th>ROLE</th>
+                        <th>STATUS</th>
+                        <th>TERDAFTAR</th>
+                        <th>TERAKHIR LOGIN</th>
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1.</td>
-                        <td>Name Product</td>
-                        <td>This is product...</td>
-                        <td>Rp. 000</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>Daily Product</td>
-                        <td>Mar 2, 2020</td>
-                        <td>April 2, 2020</td>
-                        <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
-                        <td>Name Product</td>
-                        <td>This is product...</td>
-                        <td>Rp. 000</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>Daily Product</td>
-                        <td>Mar 2, 2020</td>
-                        <td>April 2, 2020</td>
-                        <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
-                        <td>Name Product</td>
-                        <td>This is product...</td>
-                        <td>Rp. 000</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>Daily Product</td>
-                        <td>Mar 2, 2020</td>
-                        <td>April 2, 2020</td>
-                        <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
-                        <td>Name Product</td>
-                        <td>This is product...</td>
-                        <td>Rp. 000</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>Daily Product</td>
-                        <td>Mar 2, 2020</td>
-                        <td>April 2, 2020</td>
-                        <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>1.</td>
-                        <td>Name Product</td>
-                        <td>This is product...</td>
-                        <td>Rp. 000</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>Daily Product</td>
-                        <td>Mar 2, 2020</td>
-                        <td>April 2, 2020</td>
-                        <td>/c/67f72a88-96a4-800a-8f9f</td>
-                        <td><button class="actions-button">⋮</button></td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>johndoe</td>
+                        <td>User</td>
+                        <td>Pelanggan</td>
+                        <td>Mar 2, 2023</td>
+                        <td>Apr 10, 2025</td>               
+                        <td class="edit-container">
+                            <button class="edit-toggle" onclick="toggleDropdown(this)">⋮</button>
+                            <div class="edit-dropdown">
+                              <button onclick="editEntity()">Edit</button>
+                              <button onclick="deleteEntity()">Hapus</button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="pagination">
-            <button class="pagination-button">
-                <span class="arrow-icon">←</span>
-                <span class="pagination-text">Prev</span>
-            </button>
-            <button class="pagination-button">1</button>
-            <button class="pagination-button">2</button>
-            <button class="pagination-button">3</button>
-
-            <button class="pagination-button">
-                <span class="pagination-text">Next</span>
-                <span class="arrow-icon">→</span>
-            </button>
+            
         </div>
     </div>
-    <script>
-        // Get DOM elements
-        const toggleBtn = document.getElementById('toggleSidebar');
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContent');
-        const overlay = document.getElementById('overlay');
-        
-        // Function to check if device is mobile
-        function isMobile() {
-            return window.innerWidth <= 768;
-        }
-        
-        // Initial setup based on screen size
-        function setupInitialState() {
-            if (isMobile()) {
-                sidebar.classList.add('sidebar-hidden');
-                mainContent.classList.add('full-width');
-            } else {
-                sidebar.classList.remove('sidebar-hidden');
-                mainContent.classList.remove('full-width');
-            }
-        }
-        
-        // Toggle sidebar visibility
-        function toggleSidebar() {
-        console.log("Toggle sidebar called");
-            if (isMobile()) {
-                console.log("Mobile mode detected");
-                sidebar.classList.toggle('sidebar-visible');
-                overlay.classList.toggle('active');
-            } else {
-                console.log("Desktop mode detected");
-                sidebar.classList.toggle('sidebar-hidden');
-                mainContent.classList.toggle('full-width');
-            }
-        }
-        
-        // Event listeners
-        toggleBtn.addEventListener('click', toggleSidebar);
-        overlay.addEventListener('click', toggleSidebar);
-        
-        // Resize handler
-        window.addEventListener('resize', setupInitialState);
-        
-        // Run initial setup
-        setupInitialState();
-    </script>
+    <script src="dashboard_js/sidebar_nav.js"></script>
+    <script src="dashboard_js/table_pagination.js"></script>
+    <script src="dashboard_js/table_update.js"></script>
 </body>
 </html>
