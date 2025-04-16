@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User Form</title>
+    <link rel="stylesheet" href="../../css/dashboard_css/add_user.css">
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="toggle-btn" id="toggleSidebar">
+        ☰
+    </button>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <h2 class="sidebar-title">Dashboard</h2>
+        <ul class="sidebar-menu">
+            <li>Home</li>
+            <li>Users</li>
+            <li>Products</li>
+            <li>Orders</li>
+            <li>Settings</li>
+            <li>Logout</li>
+        </ul>
+    </aside>
+    
+    <main id="main">
+        <section class="add-user-container">
+            <form class="add-user-form" id="addUserForm">
+                <!-- Upload profile picture -->
+                <label class="custom-file-upload" for="user-avatar">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08s5.97 1.09 6 3.08c-1.29 1.94-3.5 3.22-6 3.22z"/>
+                        </svg>
+                    </div>
+                    <div class="text">
+                        <span>Upload Image</span>
+                    </div>
+                    <input type="file" id="user-avatar" accept="image/*">
+                </label>
+
+                <div class="separator">
+                    <div class="line"></div>
+                    <p>Insert your data of user</p>
+                    <div class="line"></div>
+                </div>
+
+                <div class="user-info-form">
+                    <!-- Full Name -->
+                    <div class="input-container">
+                        <label for="user-fullname" class="input-label">Full Name</label>
+                        <input id="user-fullname" class="input-field" type="text" name="user-fullname" placeholder="Enter full name" required>
+                    </div>
+
+                    <!-- Username -->
+                    <div class="input-container">
+                        <label for="user-username" class="input-label">Username</label>
+                        <input id="user-username" class="input-field" type="text" name="user-username" placeholder="Enter username" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="input-container">
+                        <label for="user-email" class="input-label">Email</label>
+                        <input id="user-email" class="input-field" type="email" name="user-email" placeholder="Enter email" required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="input-container">
+                        <label for="user-password" class="input-label">Password</label>
+                        <input id="user-password" class="input-field" type="password" name="user-password" placeholder="Enter password" required>
+                    </div>
+
+                    <!-- Role User -->
+                    <div class="input-container">
+                        <label for="user-role" class="input-label">Role of User</label>
+                        <div class="dropdown-container">
+                            <select id="user-role" class="category-select" name="user-role" required>
+                                <option value="" disabled selected>Choose a Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="customer">Customer</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="submit-btn">Add User</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Get DOM elements
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const main = document.getElementById('main');
+        const fileInput = document.getElementById('user-avatar');
+        const addUserForm = document.getElementById('addUserForm');
+        
+        // Toggle sidebar functionality
+        toggleBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            main.classList.toggle('active');
+            toggleBtn.classList.toggle('active');
+        });
+        
+        // File upload handler
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                console.log('File selected:', file.name);
+                // Here you could add preview functionality if needed
+            }
+        });
+        
+        // Form validation and submission
+        addUserForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Basic form validation
+            const fullname = document.getElementById('user-fullname').value.trim();
+            const username = document.getElementById('user-username').value.trim();
+            const email = document.getElementById('user-email').value.trim();
+            const password = document.getElementById('user-password').value;
+            const role = document.getElementById('user-role').value;
+            
+            // Check if all fields are filled
+            if (!fullname || !username || !email || !password || !role) {
+                alert('Please fill all required fields.');
+                return;
+            }
+            
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // If validation passes, you would typically submit the form data
+            console.log('Form submitted successfully!');
+            console.log({
+                fullname,
+                username,
+                email,
+                password: '********', // Don't log actual password
+                role
+            });
+            
+            // Here you would typically send data to server
+            // For now, we'll just reset the form
+            addUserForm.reset();
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const isClickInsideSidebar = sidebar.contains(event.target);
+            const isClickOnToggleBtn = toggleBtn.contains(event.target);
+            
+            if (!isClickInsideSidebar && !isClickOnToggleBtn && window.innerWidth <= 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                main.classList.remove('active');
+                toggleBtn.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
